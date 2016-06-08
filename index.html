@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,, minimum-scale=1, maximum-scale=1">
+    <title>卡地亚 Cartier</title>
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- rem js -->
+    <script type="text/javascript">
+      (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+              var clientWidth = docEl.clientWidth;
+            // var clientHeight = docEl.clientHeight;
+              if (!clientWidth) return;
+                docEl.style.fontSize = 50 * (clientWidth / 375) + 'px';
+          // docEl.style.fontSize = 50 * (clientHeight / 603) + 'px';
+              };
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+    </script>
+</head>
+<body>
+  <!-- loadWrap starts -->
+  <!-- <div class="loadWrap">
+    <img class="headLogo" src="img/png/head-logo.png"/>
+    <div class="loadContainer">
+      <div class="numContainer">
+        <p class="loadNum">0%</p>
+        <div class="logoContainer">
+          <img src="img/png/load-logo.png" class="loadLogo"/>
+        </div>
+      </div>
+      <canvas id="loadCircle" width="100" height="100"></canvas>
+      <img src="img/png/load-spinner.png" class="loadSpinner"/>
+    </div>
+  </div> -->
+  <!-- loadWrap ends -->
+
+  <!-- mainWrap stars-->  
+  <div class="mainWrap">
+    <div class="menuBar">
+      <a onclick="toggleMenu()">
+        <img src="img/png/btn-menu.png"/>
+      </a>
+      <img src="img/png/head-logo.png"/>
+      <a>
+        <img src="img/png/btn-music.png"/>
+      </a>
+    </div>
+    <div class="menu">
+      <img src="img/png/title-menu.png"/>
+      <a onclick="showWrap('video','film')">
+        <img src=""/>
+      </a>
+      <a onclick="showWrap('video','bonus')">
+        <img src="img/jpg/menu-bonus.jpg"/>
+      </a>
+      <a onclick="showWrap('video','luhan')">
+        <img src="img/jpg/menu-luhan.jpg"/>
+      </a>
+      <a onclick="showWrap('video','lisa')">
+        <img src="img/jpg/menu-lisa.jpg"/>
+      </a>
+      <a onclick="showWrap('video','liqi')">
+        <img src="img/jpg/menu-liqi.jpg"/>
+      </a>
+      <a onclick="showWrap('gallery','')">
+        <img src="img/jpg/menu-gallery.jpg"/>
+      </a>
+       <a onclick="showWrap('shop','')">
+        <img src="img/jpg/menu-shop.jpg"/>
+      </a>
+      <a>
+      详情请上卡地亚网站: www.cartier.com
+      </a>
+    </div>
+  </div>
+  <!-- mainWrap ends -->
+
+  <!-- videoWrap starts -->
+  <div class="videoWrap">
+    <img class="headLogo" src="img/png/head-logo.png"/>
+    <div class="videoContainer">
+      <img class="titleImg" src=""/>
+      <p class="content"></p>
+      <iframe></iframe>
+    </div>
+  </div>
+  <!-- videoWrap ends -->
+
+  <!-- galleryWrap starts -->
+  <!-- <div class="galleryWrap">
+    
+  </div> -->
+  <!-- galleryWrap ends -->
+
+  <!-- shopWrap starts -->
+  <!-- <div class="shopWrap">
+    
+  </div> -->
+  <!-- shopWrap ends -->
+    <!-- Swiper JS -->
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/load.js"></script>
+
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="js/swiper.js"></script>
+    <script type="text/javascript">
+    
+    function toggleMenu(){
+      var height = window.innerHeight;
+      var rem = document.getElementsByTagName('html')[0].style['font-size'].slice(0, -2);
+      $('.menu').css('max-height', (height - 1.8*parseInt(rem))+'px');
+      $('.menu').toggleClass('visible');
+    }
+    </script>
+
+</body>
+</html>
+
