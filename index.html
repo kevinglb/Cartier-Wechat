@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,, minimum-scale=1, maximum-scale=1">
     <title>卡地亚 Cartier</title>
     <!-- Link CSS -->
-    <link rel="stylesheet" href="css/swiper.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper.css"/>
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+
 
     <!-- rem js -->
     <script type="text/javascript">
@@ -45,7 +47,8 @@
 
   <!-- mainWrap stars-->  
   <div class="mainWrap">
-    <div class="menuBar">
+    <!-- headBar start-->
+    <div class="headBar">
       <a class="menuBtn">
         <img src="img/png/btn-menu.png"/>
       </a>
@@ -54,6 +57,7 @@
         <img src="img/png/btn-music.png"/>
       </a>
     </div>
+    <!-- headBar end-->
     <div class="overlay"></div>
     <div class="menu">
       <img src="img/png/title-menu.png"/>
@@ -85,16 +89,17 @@
 
   <!-- videoWrap starts -->
   <div class="videoWrap">
-    <!-- <img class="headLogo" src="img/png/head-logo.png"/> -->
-    <div class="menuBar">
-      <a class="">
+    <!-- headBar start-->
+    <div class="headBar">
+      <a class="dn">
         <!-- <img src="img/png/btn-menu.png"> -->
       </a>
       <img src="img/png/head-logo.png">
-      <a class="closeBtn">
-        <img src="img/png/btn-music.png">
+      <a class="closeBtn" data-target="video">
+        <img src="img/png/btn-close.png">
       </a>
     </div>
+    <!-- headBar end-->
     <div class="videoContainer">
       <img class="titleImg" src=""/>
       <p class="content"></p>
@@ -105,15 +110,71 @@
 
   <!-- galleryWrap starts -->
   <div class="galleryWrap">
-    <img class="headLogo" src="img/png/head-logo.png"/>
+    <!-- headBar start-->
+    <div class="headBar">
+      <a class="dn">
+        <!-- <img src="img/png/btn-menu.png"> -->
+      </a>
+      <img src="img/png/head-logo.png">
+      <a class="closeBtn" data-target="gallery">
+        <img src="img/png/btn-close.png">
+      </a>
+    </div>
+    <!-- headBar end-->
     <div class="galleryContainer">
       <img class="titleImg" src=""/>
+      <div class="galleryContent animated">
+        <div class="galleryImg" data-type="gallery" data-target="0"></div>
+        <div class="galleryImg" data-type="gallery" data-target="1"></div>
+        <div class="galleryImg" data-type="gallery" data-target="2"></div>
+        <div class="galleryImg" data-type="gallery" data-target="3"></div>
+        <div class="galleryImg" data-type="gallery" data-target="4"></div>
+        <div class="galleryImg" data-type="gallery" data-target="5"></div>s
+      </div>
+      <div class="swiper-container gallery-container animated">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            img1
+          </div>
+          <div class="swiper-slide">
+            img2
+          </div>
+          <div class="swiper-slide">
+            img3
+          </div>
+          <div class="swiper-slide">
+            img4
+          </div>
+          <div class="swiper-slide">
+            img5
+          </div>
+          <div class="swiper-slide">
+            img6
+          </div>
+        </div>
+        
+      </div>
+      <div class="swiper-button-prev swiper-btn">
+        <img src="img/png/btn-prev.png"/>
+      </div>
+      <div class="swiper-button-next swiper-btn">
+        <img src="img/png/btn-next.png"/>
+      </div>
+      
     </div>
   </div>
   <!-- galleryWrap ends -->
 
   <!-- shopWrap starts -->
   <div class="shopWrap">
+    <div class="headBar">
+      <a class="dn">
+      </a>
+      <img src="img/png/head-logo.png">
+      <a class="closeBtn" data-target="shop">
+        <img src="img/png/btn-close.png">
+      </a>
+    </div>
     <div class="swiper-container ring-container">
       <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -136,7 +197,9 @@
     <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
     <!-- Swiper JS -->
     <script src="js/swiper.js"></script>
+
     <script type="text/javascript" src="js/main.js"></script>
+
 
 </body>
 </html>

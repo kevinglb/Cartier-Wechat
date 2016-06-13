@@ -24,6 +24,7 @@ body{position: relative;}
 .cn{
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;
 }
+.dn{display: none}
 .swiper-container {
     width: 100%;
     margin: 0px auto;
@@ -71,7 +72,7 @@ body{position: relative;}
     transform: translate3d(0,0,0);
     
 }
-.videoWrap:after {
+.videoWrap:after, .shopWrap:after, .galleryWrap:after {
     content : "";
     display: block;
     position: absolute;
@@ -84,12 +85,12 @@ body{position: relative;}
     z-index: -1;
 }
 .videoContainer, .galleryContainer{
-    padding-top: 0.5rem;
+    padding-top: 0.4rem;
     width: 82%;
     margin: 0 auto;
     position: relative;
 }
-.galleryContainer{width: 90%}
+
 .videoContainer .titleImg, .galleryContainer .titleImg{
     width: 100%;
 }
@@ -104,11 +105,48 @@ body{position: relative;}
     height: auto;
     margin-top: 0.2rem;
 }
-.headLogo{
-    width: 3.6rem;
-    display: block;
-    margin-top:0.3rem; 
+
+/* gallertWrap part */
+
+.galleryImg{
+    position: relative;
+    float: left;
+    width: 47.5%;
+    height: 2.5rem;
+    background-color: #fff;
+    margin-top: 0.3rem;
 }
+.galleryImg:nth-child(2n+1){
+    margin-right: 5%;
+}
+.gallery-container{
+    position: absolute;
+    width: 90%;
+    left: 5%;
+    top: 1rem;
+    margin-top: 0.8rem;
+    height: 8rem;
+}
+
+.swiper-button-prev, .swiper-button-next{
+    width: 7%;
+    top: 1rem;
+    height: 8rem;
+    margin-top: 0.8rem;
+    background: none;
+}
+.swiper-button-prev{left: -1%;}
+.swiper-button-next{right: -1%;}
+.swiper-button-prev img, .swiper-button-next img{
+
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    height: 24px;
+}
+.swiper-button-prev img{left: 5px}
+.swiper-button-next img{right: 5px}
+/* gallertWrap part */
 
 /*load container part*/
 .loadContainer{
@@ -192,39 +230,41 @@ body{position: relative;}
     from {transform:rotate(0deg);}
     to {transform:rotate(360deg);}
 }
-
-/*menubar part*/
-.menuBar{
+/*load container part */
+/*headBar part*/
+.headBar{
     width: 100%;
     background-color: transparent;
-    min-height: 1.8rem;
+    min-height: 1.6rem;
 }
-.menuBar > img{
+.headBar > img{
     display: block;
     width: 3.6rem;
     padding-top: 0.3rem
 }
-.menuBar > a{
+.headBar > a{
     display: block;
     position: absolute;
 }
-.menuBar > a:first-of-type{
+.headBar > a:first-of-type{
     left: 0.6rem;
     top: 0.43rem;
     width: 0.44rem;
 }
-.menuBar > a:nth-of-type(2){
+.headBar > a:nth-of-type(2){
     right: 0.6rem;
     top: 0.4rem;
     width: 0.4rem;
 }
-.menuBar > a > img{
+.headBar > a > img{
     width: 100%;
     display: block;
 }
+/*headBar part*/
+/* menu part*/
 .menu{
     position: absolute;
-    top: 1.8rem;
+    top: 1.6rem;
     z-index: 2;
     left: 0;
     width: 50%;
@@ -256,3 +296,4 @@ body{position: relative;}
     font-size: 12px;
     text-align: center;
 }
+/*menu part*/

@@ -19,14 +19,12 @@
 				return showWrap(this.getAttribute('data-type'),this.getAttribute('data-para'));
 			});
 		});
-		$('.closeBtn').bind('click',function(){
-			return toggleWrap('video');
-		})
 	}
 
 	function initHeadBar(){
-		var $_menuBtn = $('.menuBar .menuBtn'),
-			$_musicBtn = $('menuBar .musicBtn');
+		var $_menuBtn = $('.headBar .menuBtn'),
+			$_musicBtn = $('.headBar .musicBtn'),
+			$_closeBtn = $('.headBar .closeBtn');
 		
 		$_menuBtn.bind('click',function(){
 			return toggleMenu();
@@ -34,7 +32,11 @@
 
 		$_musicBtn.bind('click',function(){
 			return toggleMusic();
-		})
+		});
+
+		$_closeBtn.bind('click',function(){
+			return toggleWrap(this.getAttribute('data-target'));
+		});
 	}
 
 	function showWrap(target,data){
@@ -60,7 +62,7 @@
 	function toggleMenu(){
      	var height = window.innerHeight;
       	var rem = document.getElementsByTagName('html')[0].style['font-size'].slice(0, -2);
-      	$('.menu').css('max-height', (height - 1.8*parseInt(rem))+'px');
+      	$('.menu').css('max-height', (height - 1.6*parseInt(rem))+'px');
       	$('.menu').toggleClass('visible');
     }
 
@@ -89,9 +91,16 @@
 
 	function initGalleryWrap(data){
 		if($('.galleryWrap').hasClass('initialized')){
+			toggleWrap('gallery');
 			return;
+		}else{
+			$('.galleryWrap .titleImg').attr('src','img/png/title-gallery.png');
+			initGallerySwiper();
+			toggleWrap('gallery');
+			$('.galleryWrap').addClass('initialized');
+			
 		}
-		toggleWrap('gallery');
+		
 	}
 
 	function initShopSwiper(data){
@@ -100,4 +109,33 @@
         ringSwiper.params.control = infoSwiper;
         // _this.shackleSwiper2.params.control = _this.shackleSwiper1;
 	}
+
+	function initGallerySwiper(){
+
+		var gallerySwiper = new Swiper('.gallery-container',{watchSlidesProgress : true,prevButton:'.swiper-button-prev',
+nextButton:'.swiper-button-next',});
+
+		$('.galleryContent .galleryImg').each(function(index,item){
+			//$(this).find('img').attr('src','img/jpg/menu-'+this.getAttribute('data-para')+'.jpg');
+			$(this).bind('click',function(){
+				return toggleSwiper(this.getAttribute('data-target'));
+			});
+		});
+		$('.gallery-container').addClass('dn');
+		
+
+		function toggleSwiper(target){
+			if($('.gallery-container').hasClass('dn')){
+				//if the swiper is invisible
+				gallerySwiper.slideTo(target,50,false);
+				$('.galleryContent').addClass('zoomOut');
+				$('.gallery-container').addClass('zoomIn').removeClass('dn');
+			}else{
+
+
+			}
+		}
+	}
+
+	
 }())
