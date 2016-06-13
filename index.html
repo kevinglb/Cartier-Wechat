@@ -28,7 +28,7 @@
 </head>
 <body>
   <!-- loadWrap starts -->
-  <!-- <div class="loadWrap">
+<!--   <div class="loadWrap">
     <img class="headLogo" src="img/png/head-logo.png"/>
     <div class="loadContainer">
       <div class="numContainer">
@@ -46,47 +46,55 @@
   <!-- mainWrap stars-->  
   <div class="mainWrap">
     <div class="menuBar">
-      <a onclick="toggleMenu()">
+      <a class="menuBtn">
         <img src="img/png/btn-menu.png"/>
       </a>
       <img src="img/png/head-logo.png"/>
-      <a>
+      <a class="musicBtn">
         <img src="img/png/btn-music.png"/>
       </a>
     </div>
+    <div class="overlay"></div>
     <div class="menu">
       <img src="img/png/title-menu.png"/>
-      <a onclick="showWrap('video','film')">
+      <a class="menuLink" data-type="video" data-para="film">
         <img src=""/>
       </a>
-      <a onclick="showWrap('video','bonus')">
-        <img src="img/jpg/menu-bonus.jpg"/>
+      <a class="menuLink" data-type="video" data-para="bonus">
+        <img src=""/>
       </a>
-      <a onclick="showWrap('video','luhan')">
-        <img src="img/jpg/menu-luhan.jpg"/>
+      <a class="menuLink" data-type="video" data-para="luhan">
+        <img src=""/>
       </a>
-      <a onclick="showWrap('video','lisa')">
-        <img src="img/jpg/menu-lisa.jpg"/>
+      <a class="menuLink" data-type="video" data-para="lisa" >
+        <img src=""/>
       </a>
-      <a onclick="showWrap('video','liqi')">
-        <img src="img/jpg/menu-liqi.jpg"/>
+      <a class="menuLink" data-type="video" data-para="liqi">
+        <img src=""/>
       </a>
-      <a onclick="showWrap('gallery','')">
-        <img src="img/jpg/menu-gallery.jpg"/>
+      <a class="menuLink" data-type="shop" data-para="shop" >
+        <img src=""/>
       </a>
-       <a onclick="showWrap('shop','')">
-        <img src="img/jpg/menu-shop.jpg"/>
+       <a class="menuLink" data-type="gallery" data-para="gallery" >
+        <img src=""/>
       </a>
-      <a>
-      详情请上卡地亚网站: www.cartier.com
-      </a>
+      <a>详情请上卡地亚网站: www.cartier.com</a>
     </div>
   </div>
   <!-- mainWrap ends -->
 
   <!-- videoWrap starts -->
   <div class="videoWrap">
-    <img class="headLogo" src="img/png/head-logo.png"/>
+    <!-- <img class="headLogo" src="img/png/head-logo.png"/> -->
+    <div class="menuBar">
+      <a class="">
+        <!-- <img src="img/png/btn-menu.png"> -->
+      </a>
+      <img src="img/png/head-logo.png">
+      <a class="closeBtn">
+        <img src="img/png/btn-music.png">
+      </a>
+    </div>
     <div class="videoContainer">
       <img class="titleImg" src=""/>
       <p class="content"></p>
@@ -96,31 +104,39 @@
   <!-- videoWrap ends -->
 
   <!-- galleryWrap starts -->
-  <!-- <div class="galleryWrap">
-    
-  </div> -->
+  <div class="galleryWrap">
+    <img class="headLogo" src="img/png/head-logo.png"/>
+    <div class="galleryContainer">
+      <img class="titleImg" src=""/>
+    </div>
+  </div>
   <!-- galleryWrap ends -->
 
   <!-- shopWrap starts -->
-  <!-- <div class="shopWrap">
-    
-  </div> -->
+  <div class="shopWrap">
+    <div class="swiper-container ring-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="ringImg" data-ring=""></div>
+          </div>   
+      </div>
+    </div>
+    <div class="swiper-container info-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <p class="ringInfo">
+            </p>
+          </div>     
+      </div>
+    </div>
+  </div>
   <!-- shopWrap ends -->
-    <!-- Swiper JS -->
-    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-    <script type="text/javascript" src="js/load.js"></script>
-
-    <script type="text/javascript" src="js/main.js"></script>
-    <script src="js/swiper.js"></script>
-    <script type="text/javascript">
     
-    function toggleMenu(){
-      var height = window.innerHeight;
-      var rem = document.getElementsByTagName('html')[0].style['font-size'].slice(0, -2);
-      $('.menu').css('max-height', (height - 1.8*parseInt(rem))+'px');
-      $('.menu').toggleClass('visible');
-    }
-    </script>
+    <script type="text/javascript" src="js/load.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <!-- Swiper JS -->
+    <script src="js/swiper.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>
