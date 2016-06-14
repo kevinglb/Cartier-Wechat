@@ -93,14 +93,22 @@
 
 						percentage.classList += ' hide';
 
-						loadContainer.classList += ' expand';
+						if(!loadContainer.classList.contains('expand')){
+							loadContainer.classList += ' expand';
+						} 
 						percentage.style.display = 'none';
-						circle.className += "expand";
+						 
+						if(!circle.classList.contains('expand')){
+							circle.classList += ' expand';
+						} 
 						window.setTimeout(function(){
-							spinner.classList += ' rotating';
+							
+							if(!spinner.classList.contains('rotating')){
+								spinner.classList += ' rotating';
+							}
 						},600);
 					}
-				},20);
+				},10);
                 // if(num >= imgArr.length && typeof callback == "function"){
                 //     //console.log(callback);
                 //     callback(); //the default 'this' in callback will refer to window scoop
