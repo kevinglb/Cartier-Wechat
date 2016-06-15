@@ -9,19 +9,36 @@
     <link rel="stylesheet" href="css/animate.min.css"/>
     <link rel="stylesheet" href="css/style.css"/>
 
-
-    <!-- rem js -->
+    <style>
+    #container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+  }
+  #container img{
+    position: absolute;
+    }
+     #container canvas {
+      position: absolute;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+  }</style>
+    <!-- rem js based on clientWidth-->
     <script type="text/javascript">
       (function(doc, win) {
         var docEl = doc.documentElement,
             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
             recalc = function() {
               var clientWidth = docEl.clientWidth;
-            // var clientHeight = docEl.clientHeight;
               if (!clientWidth) return;
-                docEl.style.fontSize = 50 * (clientWidth / 375) + 'px';
-          // docEl.style.fontSize = 50 * (clientHeight / 603) + 'px';
-              };
+              docEl.style.fontSize = 50 * (clientWidth / 375) + 'px';
+            };
             if (!doc.addEventListener) return;
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
@@ -31,7 +48,10 @@
 <body>
   <!-- loadWrap starts -->
   <div class="loadWrap">
-    <img class="headLogo dn" src="img/png/head-logo.png"/>
+    <!-- <img class="headLogo dn" src="img/png/head-logo.png"/> -->
+    <div id="container" class="dn"></div>
+
+    
     <div class="loadContainer">
       <div class="numContainer">
         <p class="loadNum">0%</p>
@@ -39,9 +59,11 @@
           <img src="img/png/load-logo.png" class="loadLogo"/>
         </div>
       </div>
+
       <canvas id="loadCircle" width="100" height="100"></canvas>
       <img src="img/png/load-spinner.png" class="loadSpinner"/>
     </div>
+    
   </div>
   <!-- loadWrap ends -->
 
@@ -50,15 +72,15 @@
     <!-- headBar start-->
     <div class="headBar">
       <a class="menuBtn dn">
-        <img src="img/png/btn-menu.png"/>
+        <img src=""/>
       </a>
-      <img src="img/png/head-logo.png"/>
+      <img class="headImg"  src=""/>
       <a class="musicBtn dn">
-        <img src="img/png/btn-music.png"/>
+        <img src=""/>
       </a>
     </div>
-    <!-- headBar end-->
-    <div class="overlay"></div>
+     <!-- headBar end-->
+
     <div class="menu">
       <img src="img/png/title-menu.png"/>
       <a class="menuLink" data-type="video" data-para="film">
@@ -84,6 +106,10 @@
       </a>
       <a>详情请上卡地亚网站: www.cartier.com</a>
     </div>
+    <div id="pano"></div>
+        <!-- <div class="ab logo"></div> -->
+    <div class="overlay dn"></div>
+    
   </div>
   <!-- mainWrap ends -->
 
@@ -94,9 +120,9 @@
       <a class="dn">
         <!-- <img src="img/png/btn-menu.png"> -->
       </a>
-      <img src="img/png/head-logo.png">
+      <img class="headImg" src="">
       <a class="closeBtn" data-target="video">
-        <img src="img/png/btn-close.png">
+        <img src="">
       </a>
     </div>
     <!-- headBar end-->
@@ -115,9 +141,9 @@
       <a class="dn">
         <!-- <img src="img/png/btn-menu.png"> -->
       </a>
-      <img src="img/png/head-logo.png">
+      <img class="headImg" src="">
       <a class="closeBtn" data-target="gallery">
-        <img src="img/png/btn-close.png">
+        <img src="">
       </a>
     </div>
     <!-- headBar end-->
@@ -170,9 +196,9 @@
     <div class="headBar">
       <a class="dn">
       </a>
-      <img src="img/png/head-logo.png">
+      <img class="headImg" src="">
       <a class="closeBtn" data-target="shop">
-        <img src="img/png/btn-close.png">
+        <img src="">
       </a>
     </div>
     <div class="shopContainer">
@@ -180,7 +206,6 @@
       <div class="shopContent">
         <div class="swiper-container ring-container">
           <div class="swiper-wrapper">
-   
              <div class="swiper-slide" data-ring="0">
               img1
             </div>
@@ -212,35 +237,97 @@
               img10
             </div>
           </div> 
-           
         </div>
-
         <div class="shop-button-prev swiper-btn">
           <img src="img/png/btn-prev.png"/>
         </div>
         <div class="shop-button-next swiper-btn">
           <img src="img/png/btn-next.png"/>
         </div>  
-
         <p class="ring-brief"></p>
         <div class="ring-info">
           <p></p>
         </div>
       </div>
     </div>
-
     <a href="" class="shopBtn">在线购买</a>
   </div>
   <!-- shopWrap ends -->
-    
+    <script src="js/delaunay.js"></script>
+    <script src="js/TweenMax.min.js"></script>
     <script type="text/javascript" src="js/load.js"></script>
+    
     <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script src="js/s.min.js"></script>
+    <script src="js/embedpano.js"></script>
     <!-- Swiper JS -->
-    <script src="js/swiper.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/main.js"></script>
 
-    <script type="text/javascript" src="js/main.js"></script>
+    <script>
+      var krpano;
+      var hostname=_s.cookie.get("hostname");
+      $(function(){
+        var settings = {
+          swf:"js/krpano.swf",
+          js: "js/krpano.js",
+          xml:"sphere.xml",
+          target:"pano",
+          html5: "only", //(document.domain ? "prefer" : "auto"),
+          passQueryParameters:true,
+          onready:krpanoReady
+        };
+        embedpano(settings);
+      });
+  
+      function krpanoReady(krpano) {
+      //跳转到历史节点
+  
+      //点击导航
+      /*$(".nav div").each(function(i, element) {
+      $(this).click(function(){
+      if(i==7){
+        location.href="www.cartier.cn"
+      }else{
+        krpano.call("looktohotspot(hs"+(i+1)+",90)");
+      }
+      
+    })
+  });*/
+    }
 
+    function loadcomplete(){
+   // $(".load").hide();
+      if(hostname){
+        krpano = document.getElementById("krpanoSWFObject");
+        krpano.call("looktohotspot("+hostname+",90)");
+      }
+      setInterval(animatepoint,50);
+    }
 
+    var count=1;
+    var count1=1;
+    function animatepoint(){
+      if(count<=2){
+        count+=0.05;
+        count1-=0.03;
+      }else{
+        count=1;
+        count1=1
+      }
+      krpano = document.getElementById("krpanoSWFObject");
+      krpano.get("hotspot['hs11']").scale=count;
+      krpano.get("hotspot['hs11']").alpha=count1;
+      krpano.get("hotspot['hs22']").scale=count;
+      krpano.get("hotspot['hs22']").alpha=count1;
+      krpano.get("hotspot['hs33']").scale=count;
+      krpano.get("hotspot['hs33']").alpha=count1;
+      krpano.get("hotspot['hs44']").scale=count;
+      krpano.get("hotspot['hs44']").alpha=count1;
+      krpano.get("hotspot['hs55']").scale=count;
+      krpano.get("hotspot['hs55']").alpha=count1;
+  }
+</script>
 </body>
 </html>
 
