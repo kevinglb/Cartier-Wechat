@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,, minimum-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>卡地亚 Cartier</title>
     <!-- Link CSS -->
     <link rel="stylesheet" href="css/swiper.css"/>
@@ -21,14 +21,17 @@
   }
   #container img{
     position: absolute;
-    }
-     #container canvas {
-      position: absolute;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      -moz-backface-visibility: hidden;
-      -ms-backface-visibility: hidden;
-  }</style>
+    width: 100%;
+    height: 100%
+  }
+  #container canvas {
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+  }
+  </style>
     <!-- rem js based on clientWidth-->
     <script type="text/javascript">
       (function(doc, win) {
@@ -49,7 +52,7 @@
   <!-- loadWrap starts -->
   <div class="loadWrap">
     <!-- <img class="headLogo dn" src="img/png/head-logo.png"/> -->
-    <div id="container" class="dn"></div>
+    <div id="container"></div>
 
     
     <div class="loadContainer">
@@ -107,6 +110,8 @@
       <a>详情请上卡地亚网站: www.cartier.com</a>
     </div>
     <div id="pano"></div>
+
+    <img class="navi dn" src="img/png/index-navi.png"/>
         <!-- <div class="ab logo"></div> -->
     <div class="overlay dn"></div>
     
@@ -266,7 +271,7 @@
 
     <script>
       var krpano;
-      var hostname=_s.cookie.get("hostname");
+      //var hostname=s.cookie.get("hostname");
       $(function(){
         var settings = {
           swf:"js/krpano.swf",
@@ -297,25 +302,61 @@
     }
 
     function loadcomplete(){
-   // $(".load").hide();
-      if(hostname){
-        krpano = document.getElementById("krpanoSWFObject");
-        krpano.call("looktohotspot("+hostname+",90)");
+      //show menubtn and musicbtn
+      var headBar = document.getElementsByClassName('mainWrap')[0].children[0];
+      if(headBar.children[0].classList.contains('dn') && headBar.children[2].classList.contains('dn')){
+        headBar.children[0].classList.remove('dn');
+        headBar.children[2].classList.remove('dn');
       }
-      setInterval(animatepoint,50);
+   // $(".load").hide();
+      //var points = document.getElementById("krpanoSWFObject");
+      //points.get("hotspot['hs11']").style.opacity=0;
+      //points.set("hotspot['hs11']").visible = false;
+      // set(points.get("hotspot['hs11']").visible, false);
+      // set(points.get("hotspot['hs22']").visible, false);
+      // set(points.get("hotspot['hs33']").visible, false);
+      // set(points.get("hotspot['hs44']").visible, false);
+      // set(points.get("hotspot['hs55']").visible, false);
+      //points.get("hotspot['hs22']").style.opacity=0;
+      //points.get("hotspot['hs22']").alpha=count1;
+      //points.get("hotspot['hs33']").style.opacity=0;
+      //points.get("hotspot['hs44']").style.opacity=0;
+      
+      //points.get("hotspot['hs55']").style.opacity=0;
+    
+      // if(hostname){
+      //   krpano = document.getElementById("krpanoSWFObject");
+      //   //krpano.call("looktohotspot("+hostname+",90)");
+      // }
+      var krpano = document.getElementById("krpanoSWFObject");
+      krpano.get("hotspot['hs11']").visible='true';
+      krpano.get("hotspot['hs22']").visible='true';
+      krpano.get("hotspot['hs33']").visible='true';
+      krpano.get("hotspot['hs44']").visible='true';
+      krpano.get("hotspot['hs55']").visible='true';
+      krpano.get("hotspot['hs1']").visible='true';
+      krpano.get("hotspot['hs2']").visible='true';
+      krpano.get("hotspot['hs3']").visible='true';
+      krpano.get("hotspot['hs4']").visible='true';
+      krpano.get("hotspot['hs5']").visible='true';
+      krpano.get("hotspot['hs6']").visible='true';
+
+      window.setInterval(animatepoint,80);
     }
 
-    var count=1;
-    var count1=1;
+    var count = 1;
+    var count1 = 1;
     function animatepoint(){
+      var krpano = document.getElementById("krpanoSWFObject");
+      
       if(count<=2){
-        count+=0.05;
-        count1-=0.03;
+        count += 0.08;
+        count1 -= 0.05;
       }else{
         count=1;
-        count1=1
+        count1=1;
       }
-      krpano = document.getElementById("krpanoSWFObject");
+      
       krpano.get("hotspot['hs11']").scale=count;
       krpano.get("hotspot['hs11']").alpha=count1;
       krpano.get("hotspot['hs22']").scale=count;

@@ -1,7 +1,5 @@
-/*z-index setting*/
-
-
-/* .mainWrap #pano auto
+/*z-index setting
+.mainWrap #pano auto
     .mainWrap .headBar 2
     .mainWrap .menu 2
     .mainWrap overlay 1
@@ -71,7 +69,7 @@ a{color: #fff;text-decoration: none;}
     margin: 0 auto;
 }
 .loadWrap{
-    background-color: rgba(25,25,25,0.3);
+    background-color: transparent;
     z-index: 9;
 }
 .videoWrap, .galleryWrap, .shopWrap{
@@ -124,7 +122,28 @@ a{color: #fff;text-decoration: none;}
 }
 /*pano part*/
 .mainWrap .headBar{position: absolute;top: 0;left: 0;z-index: 2}
-.mainWrap .overlay{position: absolute;top: 0;left: 0;background-color: rgba(15,15,15,0.4);z-index: 1;width: 100%;height: 100%}
+.mainWrap .overlay{position: absolute;top: 0;left: 0;background-color: rgba(215,215,215,0.4);z-index: 1;width: 100%;height: 100%}
+.mainWrap .navi{   
+    position: absolute;
+    top: 50%;
+    width: 120px;
+    z-index: 2;
+    height: 48px;
+    margin: 0 auto;
+    left: 50%;
+    margin-left: -60px;
+    margin-top: -24px;
+}
+.navi.fadeOut, .overlay.fadeOut{animation: blur 1600ms normal forwards linear;}
+
+@keyframes blur {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
 
 /* menu part*/
 .menu{
@@ -169,6 +188,7 @@ a{color: #fff;text-decoration: none;}
 }
 /*menu part*/
 
+.swiper-btn{outline: none;}
 /* gallertWrap part */
 .galleryImg{
     position: relative;
@@ -195,9 +215,10 @@ a{color: #fff;text-decoration: none;}
     height: 8rem;
     margin-top: 0.8rem;
     background: none;
+    cursor: none;
 }
-.galleryContainer .swiper-button-prev{left: -1%;}
-.galleryContainer .swiper-button-next{right: -1%;}
+.galleryContainer .swiper-button-prev{left: -2%;}
+.galleryContainer .swiper-button-next{right: -2%;}
 .galleryContainer .swiper-btn img{
     position: absolute;
     top: 50%;
@@ -224,6 +245,7 @@ a{color: #fff;text-decoration: none;}
     height: 3rem;
     display: block;
     width: 5%;
+    top: 0
 }
 .shopContainer .swiper-btn img{
     position: absolute;
@@ -237,23 +259,7 @@ a{color: #fff;text-decoration: none;}
 .ring-info{
     min-height: 2.5rem;
 }
-.shopContainer .swiper-button-prev, .shopContainer .swiper-button-next{
-    width: 7%;
-    top: 1rem;
-    height: 8rem;
-    margin-top: 0.8rem;
-    background: none;
-}
-.shopContainer .swiper-button-prev{left: -1%;}
-.shopContainer .swiper-button-next{right: -1%;}
-.shopContainer .swiper-button-prev img, .shopContainer .swiper-button-next img{
-    position: absolute;
-    top: 50%;
-    margin-top: -15px;
-    height: 24px;
-}
-.shopContainer .swiper-button-prev img{left: 5px}
-.shopContainer .swiper-button-next img{right: 5px}
+
 .ring-container{
     height: 3rem;
 }
@@ -370,12 +376,12 @@ a{color: #fff;text-decoration: none;}
 /*headBar part*/
 .headBar{
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(10,10,10,0.2);
     min-height: 1.6rem;
 }
 .headBar > img{
     display: block;
-    width: 3.6rem;
+    width: 3rem;
     padding-top: 0.4rem
 }
 .headBar > a{
