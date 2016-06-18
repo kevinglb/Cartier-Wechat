@@ -4,74 +4,75 @@
 	<image type="CUBE" prealign="">
 	    <cube url="img/jpg/360_%s.jpg" />
 	</image>
-	<!--<hotspot name="hs1" url="img/180.png"
-	         ath="-29.244813" atv="-10.08288" width="30" height="30"
-					 onclick="hotclick"
-	         />
-	 <hotspot name="hs2" url="img/180.png" 
-	 ath="241.107291" atv="-10.844354" width="30" height="30" 
-	 />-->
+
 	<!-- <action name="hotclick">
 		 js(abc());
-	 </action>-->
-	<!-- <events onloadcomplete="loadcomplete"/> -->
-	<hotspot name="hs33" url="img/png/point.png" 
-	         ath="-2.183425" atv="20.638141"  width="25" height="25" 
-	         depth="1000"
-	         polyline="false"
-	         scaleflying="true"
-	         tx="0"
-	         ty="0"
-	         tz="0"
-	         visible="false"/>
+	 </action>-->	 
 	<hotspot name="hs11" url="img/png/point.png" 
-	         ath="-18.348284" atv="40.539909" width="25" height="25" 
+	         ath="-1.122933" atv="21.26477" scale="0.5" width="50" height="50" 
+			 visible="false"
 	         depth="1000"
 	         polyline="false"
 	         scaleflying="true"
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>	 
+	         />
 	<hotspot name="hs22" url="img/png/point.png" 
-	         ath="38.887565" atv="45.808452" width="25" height="25" 
+	         ath="-16.853303" atv="44.74209" scale="0.5" width="50" height="50" 
+			 visible="false"
 	         depth="1000"
 	         polyline="false"
 	         scaleflying="true"
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>
-	<hotspot name="hs55" url="img/png/point.png" 
-	         ath="129.660035" atv="11.422499"  width="25" height="25" 
+	         />
+	<hotspot name="hs33" url="img/png/point.png" 
+	         ath="219.668303" atv="1.011678" scale="0.5" width="50" height="50" 
+			 visible="false"
 	         depth="1000"
 	         polyline="false"
 	         scaleflying="true"
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>
+	         />
 	<hotspot name="hs44" url="img/png/point.png" 
-	         ath="-58.731612" atv="32.895204"  width="25" height="25"
+	         ath="-58.731612" atv="32.895204" scale="0.5" width="50" height="50"
+	         visible="false"
 	         depth="1000"
 	         polyline="false"
 	         scaleflying="true"
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>
-	<hotspot name="hs3" url="img/png/btn1.png" 
-	         ath="-2.183425" atv="20.638141" scale="0.5" width="66" height="137" 
-			 onclick="hotclick3"
+	         />
+	<hotspot name="hs55" url="img/png/point.png" 
+	         ath="123.712878" atv="11.763777" scale="0.5" width="50" height="50" 
+			 visible="false"
 	         depth="1000"
 	         polyline="false"
 	         scaleflying="true"
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>
+	         />
+	
+	<hotspot name="hs77" url="img/png/point.png" 
+	         ath="48.627642" atv="26.492991"  scale="0.5" width="50" height="50" 
+			 visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+		<!---->
 	<hotspot name="hs1" url="img/png/btn2.png" 
-	         ath="-18.348284" atv="40.539909" scale="0.5" width="140" height="142" 
+	         ath="-1.122933" atv="21.26477" scale="0.5" width="140" height="142" 
+	         visible="false"
 			 onclick="hotclick1"
 	         depth="1000"
 	         polyline="false"
@@ -79,19 +80,10 @@
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>
-	<hotspot name="hs7" url="img/png/btn3.png" 
-	         ath="49.598649" atv="32.806772" scale="0.5" width="269" height="107" 
-			 onclick="hotclick7"
-	         depth="1000"
-	         polyline="false"
-	         scaleflying="true"
-	         tx="0"
-	         ty="0"
-	         tz="0"
-	         visible="false"/>		 
+	         />
 	<hotspot name="hs2" url="img/png/btn4.png" 
-	         ath="38.887565" atv="45.808452" scale="0.5"  width="68" height="147" 
+	         ath="-16.853303" atv="44.74209" scale="0.5" width="68" height="147" 
+	         visible="false"
 			 onclick="hotclick2"
 	         depth="1000"
 	         polyline="false"
@@ -100,18 +92,20 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs5" url="img/png/btn5.png" 
-	         ath="129.660035" atv="11.422499" scale="0.5" width="163" height="157" 
-			 onclick="hotclick5"
+	<hotspot name="hs3" url="img/png/btn1.png" 
+	         ath="219.668303" atv="1.011678" scale="0.5" width="66" height="137" 
+	         visible="false"
+	         onclick="hotclick3"
 	         depth="1000"
 	         polyline="false"
 	         scaleflying="true"
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false"/>
+	         />
 	<hotspot name="hs4" url="img/png/btn6.png" 
 	         ath="-58.731612" atv="32.895204" scale="0.5" width="136" height="150"
+	         visible="false"
 			 onclick="hotclick4" 
 	         depth="1000"
 	         polyline="false"
@@ -119,9 +113,11 @@
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false" />
+	         />
+
 	<hotspot name="hs6" url="img/png/btn7.png" 
-	         ath="238.479734" atv="0.050412" scale="0.5" width="336" height="189" 
+	         ath="123.712878" atv="11.763777" scale="0.5" width="342" height="310" 
+	         visible="false"
 	         onclick="hotclick6"
 	         depth="1000"
 	         polyline="false"
@@ -129,17 +125,24 @@
 	         tx="0"
 	         ty="0"
 	         tz="0"
-	         visible="false" />	
-	<!--	<hotspot name="hs3" url="images/step2.png" 
-	         ath="150.162424" atv="-34.167873" width="850" height="570" 
-	         onclick="hotclick2"
-	         />-->
-	<action name="hotclick1">js(hostPointClick('video','film','hs1'));</action>
-	<action name="hotclick2">js(hostPointClick('video','bonus','hs2'));</action>
-	<action name="hotclick3">js(hostPointClick('video','luhan','hs3'));</action>
-	<action name="hotclick4">js(hostPointClick('video','lisa','hs4'));</action>
-	<action name="hotclick5">js(hostPointClick('video','lisa','hs5'));</action>
-	<action name="hotclick6">js(hostPointClick('gallery','','hs6'));</action>
-	<action name="hotclick7">js(hostPointClick('shop','','hs7'));</action>
-	<!-- <action name="loadcomplete">js(loadcomplete());</action> -->
+	         />
+	
+	<hotspot name="hs7" url="img/png/btn3.png" 
+	         ath="48.627642" atv="26.492991" scale="0.5" width="291" height="151"
+	         visible="false" 
+			 onclick="hotclick7"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<action name="hotclick1">js(hostPointClick('video','film','hs1');validTracking('Video-Film'));</action>
+	<action name="hotclick2">js(hostPointClick('video','bonus','hs2');validTracking('Video-Film-NG'));</action>
+	<action name="hotclick3">js(hostPointClick('video','luhan','hs3');validTracking('Video-Luhan'));</action>
+	<action name="hotclick4">js(hostPointClick('video','lisa','hs4');validTracking('Video-Lisa'));</action>
+	<!-- <action name="hotclick5">js(hostPointClick('gallery','','hs5');validTracking('Video-Photo'));</action> -->
+	<action name="hotclick6">js(hostPointClick('gallery','','hs6');validTracking('Video-Photo'));</action>
+	<action name="hotclick7">js(hostPointClick('shop','','hs7');validTracking('Video-Juste'));</action>
 </krpano>

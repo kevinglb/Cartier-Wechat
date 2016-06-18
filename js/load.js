@@ -162,10 +162,12 @@
     	clickPosition[1] = event.clientY - top;
         image.style.opacity = 1;
     	triangulate();
+        
         window.setTimeout(function(){
             shatter();
         },500);
-    	
+    	//tracking code
+        validTracking('Experience');
 	}
 	function triangulate() {
     	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},,{r: 300,c: 12},{r: 1200,c: 12}],

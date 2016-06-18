@@ -27,7 +27,8 @@
 		$('.menu .menuLink').each(function(index,item){
 			$(this).find('img').attr('src','img/jpg/menu-'+this.getAttribute('data-para')+'.jpg');
 			$(this).bind('click',function(){
-				return showWrap(this.getAttribute('data-type'),this.getAttribute('data-para'));
+				showWrap(this.getAttribute('data-type'),this.getAttribute('data-para'));
+				validTracking('Menu-'+this.getAttribute('data-track'));
 			});
 		});
 
@@ -52,10 +53,12 @@
 		$_headImg.attr('src','img/png/head-logo.png');
 
 		$_menuBtn.bind('click',function(){
-			return toggleMenu();
+			toggleMenu();
+			validTracking('Menu');
 		});
 		$_musicBtn.bind('click',function(){
-			return toggleMusic(this);
+		 	toggleMusic(this);
+		 	validTracking('Menu-Music');
 		});
 		$_closeBtn.bind('click',function(){
 			return toggleWrap(this.getAttribute('data-target'));
@@ -144,18 +147,23 @@
 
 	function initShopSwiper(data){
 		//store brief in array, update after transitionEnd
-		var briefArr = [];
+		var briefArr = ['Juste un Clou戒指\n18K玫瑰金,钻石','Juste un Clou戒指\r\n白18K金,钻石',
+						'Juste un Clou戒指\r\n18K黄金,钻石','Juste un Clou戒指\n18K金,钻石','Juste un Clou戒指\n18K玫瑰金,钻石。',
+						'Juste un Clou戒指\n18K玫瑰金','Juste un Clou戒指\n18K玫瑰金','Juste un Clou手镯\n白18K金,钻石','Juste un Clou手镯\n18K玫瑰金,钻石',
+						'Juste un Clou项链\n18K玫瑰金,钻石','Juste un Clou项链\n白18K金,钻石','Juste un Clou项链\n18K黄金,钻石'];
 		//store ring info in Array, update after transitionEnd
-		var infoArr = [];
+		var infoArr = ['表达自信不羁的独立精神，彰显个人独特自我。问世于上世纪七十年代纽约的Juste un Clou，体现张扬摩登，特立独行的纽约设计风格，一经推出就广受追捧。作品线条鲜明，将现代气息与大胆创意融为一体。'];
 
 		var updateInfo = function(){
-			var index = ringSwiper.activeIndex+1;
-			$('.ring-brief').text(briefArr[index]);
-			$('.ring-info p').text(briefArr[index]);
+
+			var index = $(".ring-container .swiper-slide-active").attr('data-ring');
+			$(".ring-brief").text(briefArr[index]);
+			$(".ring-info").text(infoArr[0]);
 		}
 
 		var ringSwiper = new Swiper('.ring-container',{watchSlidesProgress : true,shortSwipes : true,prevButton:'.shop-button-prev',
-nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1, onTransitionEnd:function(swiper){updateInfo()}});
+nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlides : true, onTransitionEnd:function(swiper){updateInfo()}});
+		updateInfo();
 	}
 
 	function initGallerySwiper(){
@@ -201,4 +209,8 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1, onTransitio
 				break;
 		}
 		return;
+	}
+
+	function validTracking(eventName){
+		ga('360',eventName);
 	}
