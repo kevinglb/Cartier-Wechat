@@ -190,6 +190,7 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 
 		// $('.shop-container .shop-button-prev').find('img').attr('src','img/png/btn-prev.png');
 		// $('.shop-container .shop-button-prev').find('img').attr('src','img/png/btn-next.png');
+		ringSwiper.slideTo(1);
 		updateInfo();
 	}
 
