@@ -1,0 +1,148 @@
+<krpano>
+	<plugin name="gyro" devices="html5" keep="true" url="js/gyro.js" enabled="true" sensor_mode="1" onavailable="" onunavailable=""/>
+	<plugin name="editor" url="http://p.surto.cn/test/cartiervr/1.19v4/plugins/editor.swf" keep="true" />
+	<image type="CUBE" prealign="">
+	    <cube url="img/jpg/360_%s.jpg" />
+	</image>
+
+	<!-- <action name="hotclick">
+		 js(abc());
+	 </action>-->	 
+	<hotspot name="hs11" url="img/png/point.png" 
+	         ath="-1.122933" atv="21.26477" scale="0.5" width="50" height="50" 
+			 visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs22" url="img/png/point.png" 
+	         ath="-16.853303" atv="44.74209" scale="0.5" width="50" height="50" 
+			 visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs33" url="img/png/point.png" 
+	         ath="219.668303" atv="1.011678" scale="0.5" width="50" height="50" 
+			 visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs44" url="img/png/point.png" 
+	         ath="-58.731612" atv="32.895204" scale="0.5" width="50" height="50"
+	         visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs55" url="img/png/point.png" 
+	         ath="123.712878" atv="11.763777" scale="0.5" width="50" height="50" 
+			 visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	
+	<hotspot name="hs77" url="img/png/point.png" 
+	         ath="48.627642" atv="26.492991"  scale="0.5" width="50" height="50" 
+			 visible="false"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+		<!---->
+	<hotspot name="hs1" url="img/png/btn2.png" 
+	         ath="-1.122933" atv="21.26477" scale="0.5" width="140" height="142" 
+	         visible="false"
+			 onclick="hotclick1"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs2" url="img/png/btn4.png" 
+	         ath="-16.853303" atv="44.74209" scale="0.5" width="68" height="147" 
+	         visible="false"
+			 onclick="hotclick2"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs3" url="img/png/btn1.png" 
+	         ath="219.668303" atv="1.011678" scale="0.5" width="66" height="137" 
+	         visible="false"
+	         onclick="hotclick3"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<hotspot name="hs4" url="img/png/btn6.png" 
+	         ath="-58.731612" atv="32.895204" scale="0.5" width="136" height="150"
+	         visible="false"
+			 onclick="hotclick4" 
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+
+	<hotspot name="hs6" url="img/png/btn7.png" 
+	         ath="123.712878" atv="11.763777" scale="0.5" width="342" height="310" 
+	         visible="false"
+	         onclick="hotclick6"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	
+	<hotspot name="hs7" url="img/png/btn3.png" 
+	         ath="48.627642" atv="26.492991" scale="0.5" width="291" height="151"
+	         visible="false" 
+			 onclick="hotclick7"
+	         depth="1000"
+	         polyline="false"
+	         scaleflying="true"
+	         tx="0"
+	         ty="0"
+	         tz="0"
+	         />
+	<action name="hotclick1">js(hostPointClick('video','film','hs1');validTracking('Video-Film'));</action>
+	<action name="hotclick2">js(hostPointClick('video','bonus','hs2');validTracking('Video-Film-NG'));</action>
+	<action name="hotclick3">js(hostPointClick('video','luhan','hs3');validTracking('Video-Luhan'));</action>
+	<action name="hotclick4">js(hostPointClick('video','lisa','hs4');validTracking('Video-Lisa'));</action>
+	<!-- <action name="hotclick5">js(hostPointClick('gallery','','hs5');validTracking('Video-Photo'));</action> -->
+	<action name="hotclick6">js(hostPointClick('gallery','','hs6');validTracking('Video-Photo'));</action>
+	<action name="hotclick7">js(hostPointClick('shop','','hs7');validTracking('Video-Juste'));</action>
+</krpano>
