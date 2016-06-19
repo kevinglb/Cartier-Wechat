@@ -92,7 +92,7 @@
 						// window.clearInterval(b);
 						// b = 0;
 						//swith the cavas circle with the img one
-                        
+
 						circle.style.display = 'none';
                         circle.classList.add('dn');
 						spinner.style.display = 'block';
@@ -175,6 +175,7 @@
         window.setTimeout(function(){
             shatter();
             loadWrap.style.background = 'transparent';
+            container.style.background = 'transparent';
         },500);
     	//tracking code
         validTracking('Experience');
@@ -226,14 +227,14 @@
         	fragments.push(fragment);
         	container.appendChild(fragment.canvas);
     	}
-
+        container.removeChild(image);
         if(overlay.classList.contains('dn')){
             overlay.classList.remove('dn');
         }
         if(navi.classList.contains('dn')){
             navi.classList.remove('dn');
         }
-        container.removeChild(image);
+        
         loadWrap.removeEventListener('click', imageClickHandler);
         
         window.setTimeout(function(){

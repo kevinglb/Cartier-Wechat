@@ -394,6 +394,7 @@ a{color: #fff;text-decoration: none;}
     top: 0;
     bottom: 0;
     margin: auto;
+    background: rgba(10,10,10,0.2);
 }
 #container img{
     position: absolute;
