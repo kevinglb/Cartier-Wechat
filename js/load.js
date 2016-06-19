@@ -95,18 +95,17 @@
 						//swith the cavas circle with the img one
 
 						circle.style.display = 'none';
-                        circle.classList.add('dn');
+                        circle.style.display = 'none';
+                        percentage.classList.add('dn');
 						spinner.classList.remove('dn');
                         loadLogo.classList.remove('dn');
 						if(!loadContainer.classList.contains('expand')){
-							loadContainer.classList += ' expand';
-                            
+							loadContainer.classList.add('expand');  
 						} 
-						percentage.style.display = 'none';
-                        percentage.classList.add('dn');
-						if(!circle.classList.contains('expand')){
-							circle.classList += ' expand';
-						} 
+                        //percentage.classList.add('dn');
+						// if(!circle.classList.contains('expand')){
+						// 	circle.classList.add(' expand');
+						// } 
 						window.setTimeout(function(){
 						    if(!spinner.classList.contains('rotating')){
 							 spinner.classList += ' rotating';
