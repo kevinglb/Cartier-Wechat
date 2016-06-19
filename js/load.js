@@ -55,10 +55,9 @@
 	ctx.stroke();//横线
 	ctx.closePath();
 	loadImg();
-
+    //'img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
 	function loadImg(){
-		var imgArr = ['img/png/load-spinner.png','img/jpg/index-bg.jpg','img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
-                      'img/png/glass-bg.png','img/png/btn1.png','img/png/btn2.png','img/png/btn3.png','img/png/btn4.png','img/png/btn6.png','img/png/btn7.png'];
+		var imgArr = ['img/png/load-spinner.png','img/jpg/index-bg.jpg','img/png/glass-bg.png','img/png/btn1.png','img/png/btn2.png','img/png/btn3.png','img/png/btn4.png','img/png/btn6.png','img/png/btn7.png'];
 		var num = 0,
 			len = imgArr.length;
 		for(var i=0;i<imgArr.length;i++){
