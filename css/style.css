@@ -426,12 +426,14 @@ a{color: #fff;text-decoration: none;}
 .headBar > a:first-of-type{
     left: 0.6rem;
     top: 0.43rem;
-    width: 0.44rem;
+    width: 0.84rem;
+    padding: 0.2rem;
 }
 .headBar > a:nth-of-type(2){
     right: 0.6rem;
     top: 0.4rem;
-    width: 0.4rem;
+    width: 0.8rem;
+    padding: 0.2rem;
 }
 .headBar > a > img{
     width: 100%;
