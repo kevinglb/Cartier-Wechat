@@ -95,8 +95,8 @@
 						//swith the cavas circle with the img one
 
 						circle.style.display = 'none';
-                        circle.style.display = 'none';
-                        percentage.classList.add('dn');
+                        //circle.style.display = 'none';
+                        percentage.style.display = 'none';
 						spinner.classList.remove('dn');
                         loadLogo.classList.remove('dn');
 						if(!loadContainer.classList.contains('expand')){
