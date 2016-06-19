@@ -168,11 +168,22 @@
   <!-- js -->
   <script src="js/delaunay.min.js"></script>
   <script src="js/TweenMax.min.js"></script>
+  <script src="js/s.min.js"></script>
+  <script src="js/embedpano.js"></script>
 
   <script type="text/javascript" src="js/load.js"></script>  
   <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-  <script src="js/s.min.js"></script>
-  <script src="js/embedpano.js"></script>
+  <script type="text/javascript">
+  var settings = {
+          swf:"js/krpano.swf",
+          js: "js/krpano.js",
+          xml:"sphere.xml",
+          target:"pano",
+          html5: "only", //(document.domain ? "prefer" : "auto"),
+          passQueryParameters:true,
+          // onready:krpanoReady
+        };
+        embedpano(settings);</script>
     <!-- Swiper JS -->
     <script src="js/swiper.min.js"></script>
     <script src="js/main.js"></script>
@@ -187,16 +198,16 @@
       var krpano;
       //var hostname=s.cookie.get("hostname");
       $(function(){
-        var settings = {
-          swf:"js/krpano.swf",
-          js: "js/krpano.js",
-          xml:"sphere.xml",
-          target:"pano",
-          html5: "only", //(document.domain ? "prefer" : "auto"),
-          passQueryParameters:true,
-          // onready:krpanoReady
-        };
-        embedpano(settings);
+        // var settings = {
+        //   swf:"js/krpano.swf",
+        //   js: "js/krpano.js",
+        //   xml:"sphere.xml",
+        //   target:"pano",
+        //   html5: "only", //(document.domain ? "prefer" : "auto"),
+        //   passQueryParameters:true,
+        //   // onready:krpanoReady
+        // };
+        // embedpano(settings);
       });
 
 
