@@ -2,6 +2,7 @@
 	var circle = document.getElementById('loadCircle'),
 		loadContainer = document.getElementsByClassName('loadContainer')[0],
 		loadWrap = document.getElementsByClassName('loadWrap')[0],
+        loadLogo = document.getElementsByClassName('loadLogo')[0],
 		ctx = circle.getContext('2d'),
 		cx = circle.width/2,
 		cy = circle.height/2,
@@ -95,10 +96,11 @@
 
 						circle.style.display = 'none';
                         circle.classList.add('dn');
-						spinner.style.display = 'block';
-
+						spinner.classList.remove('dn');
+                        loadLogo.classList.remove('dn');
 						if(!loadContainer.classList.contains('expand')){
 							loadContainer.classList += ' expand';
+                            
 						} 
 						percentage.style.display = 'none';
                         percentage.classList.add('dn');
@@ -204,7 +206,7 @@
     	var p0, p1, p2, fragment;
     	var tl0 = new TimelineMax({ onComplete: shatterCompleteHandler });
 
-        loadContainer.classList += ' dn';
+        loadContainer.classList.add('dn');
    	 	for (var i = 0; i < indices.length; i += 3) {
        		p0 = vertices[indices[i + 0]];
         	p1 = vertices[indices[i + 1]];

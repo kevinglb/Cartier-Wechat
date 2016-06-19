@@ -356,10 +356,9 @@ a{color: #fff;text-decoration: none;}
 .loadContainer .loadLogo{
     width: 72%;
     opacity: 0;
-    display: none;
 }
 .loadSpinner{
-    display: none;
+
     width: 100%;
 }
 .loadContainer.expand{
@@ -383,8 +382,8 @@ a{color: #fff;text-decoration: none;}
     animation: rotating 6000ms infinite linear;
 }
 @keyframes rotating {
-    from {transform:rotate(0deg);}
-    to {transform:rotate(360deg);}
+    from {-webkit-transform:rotate(0deg);transform:rotate(0deg);}
+    to {-webkit-transform:rotate(360deg);transform:rotate(360deg);}
 }
 #container {
     position: absolute;
