@@ -55,7 +55,7 @@
 	ctx.closePath();
 	loadImg();
 	function loadImg(){
-		var imgArr = ['img/png/load-spinner/png','img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
+		var imgArr = ['img/jpg/tag-img.jpg','img/png/load-spinner.png','img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
                       'img/png/glass-bg.png','img/jpg/index-bg.jpg','img/jpg/menu-bg.jpg','img/png/title-film.png','img/png/title-bonus.png','img/png/title-luhan.png','img/png/title-lisa.png','img/png/title-liqi.png',
 					  'img/png/title-gallery.png','img/png/title-shop.png','img/jpg/menu-bonus.jpg','img/jpg/menu-film.jpg','img/jpg/menu-luhan.jpg',
 					  'img/jpg/menu-lisa.jpg','img/jpg/menu-liqi.jpg','img/jpg/menu-gallery.jpg','img/jpg/menu-shop.jpg','img/jpg/luhan-1.jpg','img/jpg/luhan-2.jpg',
