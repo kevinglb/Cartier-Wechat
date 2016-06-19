@@ -69,7 +69,9 @@ a{color: #fff;text-decoration: none;}
     margin: 0 auto;
 }
 .loadWrap{
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-image: url('../img/jpg/index-bg.jpg');
+    background-size: cover;
     z-index: 9;
 }
 .videoWrap, .galleryWrap, .shopWrap{
@@ -110,8 +112,12 @@ a{color: #fff;text-decoration: none;}
 .videoContainer iframe{
     width: 100%;
     height: auto;
-    margin-top: 0.2rem;
+    margin: 0.2rem auto;
+    /*min-height: 3.8rem;*/
+    background-color: #000;
+
 }
+
 /*mainWrap part*/
 #pano{
     position: absolute;
@@ -317,6 +323,7 @@ a{color: #fff;text-decoration: none;}
     left: 0;
     opacity: 1;
 }
+
 .numContainer{
     width: 100%;
     height: 100%;
@@ -379,6 +386,27 @@ a{color: #fff;text-decoration: none;}
     from {transform:rotate(0deg);}
     to {transform:rotate(360deg);}
 }
+#container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+#container img{
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+#container canvas {
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+}
 /*load container part */
 /*headBar part*/
 .headBar{
@@ -412,7 +440,7 @@ a{color: #fff;text-decoration: none;}
 /*headBar part*/
 
 /*background setting*/
-.galleryImg[data-target='0']{
+/*.galleryImg[data-target='0']{
     background-image: url('../img/jpg/luhan-1.jpg')
 }
 .galleryImg[data-target='1']{
@@ -426,5 +454,75 @@ a{color: #fff;text-decoration: none;}
 }
 .galleryImg[data-target='4']{
     background-image: url('../img/jpg/luhan-5.jpg')
+}*/
+
+/*animation*/
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
+@-webkit-keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.zoomIn {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+}
+@-webkit-keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.zoomOut {
+  -webkit-animation-name: zoomOut;
+  animation-name: zoomOut;
+}

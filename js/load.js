@@ -13,38 +13,38 @@
         navi = document.getElementsByClassName('navi')[0],
 		a = 0;
 
-	var b=setInterval(function(){
-		if (num<=numLength) {//百分比
-			a = num/numLength * 300;//310为最后弧度
-			percentage.innerHTML = parseInt(num/numLength*100) + '%'
-			ctx.beginPath();
-			ctx.arc(cx,cy,circle.width*0.47, -45*Math.PI/180, a*Math.PI/180);
-			ctx.lineWidth = 2;
-			ctx.strokeStyle="#fff";
-			ctx.stroke();//圆
-			ctx.closePath();
-			num++;
-		}else {
-		    window.clearInterval(b);
-            b = 0;
-            //swith the cavas circle with the img one
-            circle.style.display = 'none';
-            spinner.style.display = 'block';
+	// var b=setInterval(function(){
+	// 	if (num<=numLength) {//百分比
+	// 		a = num/numLength * 300;//310为最后弧度
+	// 		percentage.innerHTML = parseInt(num/numLength*100) + '%'
+	// 		ctx.beginPath();
+	// 		ctx.arc(cx,cy,circle.width*0.47, -45*Math.PI/180, a*Math.PI/180);
+	// 		ctx.lineWidth = 2;
+	// 		ctx.strokeStyle="#fff";
+	// 		ctx.stroke();//圆
+	// 		ctx.closePath();
+	// 		num++;
+	// 	}else {
+	// 	    window.clearInterval(b);
+ //            b = 0;
+ //            //swith the cavas circle with the img one
+ //            circle.style.display = 'none';
+ //            spinner.style.display = 'block';
 
-            if(!loadContainer.classList.contains('expand')){
-                loadContainer.classList += ' expand';
-            } 
-            percentage.style.display = 'none';
-            if(!circle.classList.contains('expand')){
-                circle.classList += ' expand';
-            } 
-            window.setTimeout(function(){
-                if(!spinner.classList.contains('rotating')){
-                    spinner.classList += ' rotating';
-                }
-            },500);
-	   }
-    },20);
+ //            if(!loadContainer.classList.contains('expand')){
+ //                loadContainer.classList += ' expand';
+ //            } 
+ //            percentage.style.display = 'none';
+ //            if(!circle.classList.contains('expand')){
+ //                circle.classList += ' expand';
+ //            } 
+ //            window.setTimeout(function(){
+ //                if(!spinner.classList.contains('rotating')){
+ //                    spinner.classList += ' rotating';
+ //                }
+ //            },500);
+	//    }
+ //    },20);
 	
 	ctx.beginPath();
 	ctx.strokeStyle="#fff"; 
@@ -53,14 +53,13 @@
 	ctx.lineTo(circle.width*0.87 , circle.height*0.1);
 	ctx.stroke();//横线
 	ctx.closePath();
-	//loadImg();
+	loadImg();
 	function loadImg(){
-		var imgArr = ['img/png/title-film.png','img/png/title-bonus.png','img/png/title-luhan.png','img/png/title-lisa.png','img/png/title-liqi.png',
-					'img/png/title-gallery.png','img/png/title-shop.png','img/jpg/menu-bonus.jpg','img/jpg/menu-film.jpg','img/jpg/menu-luhan.jpg',
-					'img/jpg/menu-lisa.jpg','img/jpg/menu-liqi.jpg','img/jpg/menu-gallery.jpg','img/jpg/menu-shop.jpg','img/jpg/menu-bg.jpg',
-					'img/complete-bracelet/grisvert-silver.png','img/complete-bracelet/orrose-gold.png','img/complete-bracelet/orrose-silver.png',
-					'img/complete-bracelet/turquoise-silver.png','img/complete-bracelet/agrent-gold.png','img/complete-bracelet/blanc-silver.png',
-					'img/complete-bracelet/vert-silver.png','img/complete-bracelet/bleu-gold.png'];
+		var imgArr = ['img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
+                      'img/png/glass-bg.png','img/jpg/index-bg.jpg','img/jpg/menu-bg.jpg','img/png/title-film.png','img/png/title-bonus.png','img/png/title-luhan.png','img/png/title-lisa.png','img/png/title-liqi.png',
+					  'img/png/title-gallery.png','img/png/title-shop.png','img/jpg/menu-bonus.jpg','img/jpg/menu-film.jpg','img/jpg/menu-luhan.jpg',
+					  'img/jpg/menu-lisa.jpg','img/jpg/menu-liqi.jpg','img/jpg/menu-gallery.jpg','img/jpg/menu-shop.jpg','img/jpg/luhan-1.jpg','img/jpg/luhan-2.jpg',
+                      'img/jpg/luhan-3.jpg','img/jpg/luhan-4.jpg','img/jpg/luhan-5.jpg'];
 		var num = 0,
 			len = imgArr.length;
 		for(var i=0;i<imgArr.length;i++){
@@ -69,7 +68,14 @@
             //imgArr[i].image= image;
             image.onload = function(){
                 num++;
-                var b=setInterval(function(){
+                updateLoader(num,len);
+            };
+        }
+    }
+    function updateLoader(num,len){
+        if(num){
+                // var b=setInterval(function(num){
+                    
 					if (num!=len) {//百分比
 						a = num/len*290;//310为最后弧度
 						index = parseInt(num/len*100);
@@ -82,8 +88,8 @@
 						ctx.closePath();
 					}else{
 					   //clear the interval
-						window.clearInterval(b);
-						b = 0;
+						// window.clearInterval(b);
+						// b = 0;
 						//swith the cavas circle with the img one
 						circle.style.display = 'none';
 						spinner.style.display = 'block';
@@ -101,14 +107,14 @@
 							}
 						},500);
 					}
-				},10);
+				// },20);
                 // if(num >= imgArr.length && typeof callback == "function"){
                 //     //console.log(callback);
                 //     callback(); //the default 'this' in callback will refer to window scoop
                 // };
             }
         }
-	}
+	
     
 	//variables for glass effect
 	const TWO_PI = Math.PI * 2;
@@ -117,7 +123,6 @@
 	var vertices = [], indices = [], fragments = [];
 	var container = document.getElementById('container');
 	var imageWidth = window.innerWidth, imageHeight = window.innerHeight;
-	console.log(container.width);
 	var clickPosition = [imageWidth * 0.5,imageHeight * 0.5];
 	window.onload = function(){
     //TweenMax.set(container, { perspective: 500 });
@@ -162,9 +167,10 @@
     	clickPosition[1] = event.clientY - top;
         image.style.opacity = 1;
     	triangulate();
-        
+
         window.setTimeout(function(){
             shatter();
+            loadWrap.style.background = 'transparent';
         },500);
     	//tracking code
         validTracking('Experience');

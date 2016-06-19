@@ -5,33 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>卡地亚 Cartier</title>
     <!-- Link CSS -->
-    <link rel="stylesheet" href="css/swiper.css"/>
-    <link rel="stylesheet" href="css/animate.min.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/jpg/tag-img.jpg" media="screen"/>
 
-    <style>
-    #container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-  }
-  #container img{
-    position: absolute;
-    width: 100%;
-    height: 100%
-  }
-  #container canvas {
-    position: absolute;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-  }
-  </style>
+    <link rel="stylesheet" href="css/swiper.css"/>
+    <!-- <link rel="stylesheet" href="css/animate.min.css"/> -->
+    <link rel="stylesheet" href="css/style.css"/>
     <!-- rem js based on clientWidth-->
     <script type="text/javascript">
       (function(doc, win) {
@@ -46,19 +24,16 @@
             win.addEventListener(resizeEvt, recalc, false);
             doc.addEventListener('DOMContentLoaded', recalc, false);
       })(document, window);
-      //tracking GA code 
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-25338682-37', 'auto');
-      ga('send', 'pageview');
     </script>
 </head>
 <body>
   <!-- loadWrap starts -->
   <div class="loadWrap">
+    <div class="headBar">
+      <img class="headImg"  src=""/>
+    </div>
     <!-- <img class="headLogo dn" src="img/png/head-logo.png"/> -->
     <div id="container"></div>
-
-    
     <div class="loadContainer">
       <div class="numContainer">
         <p class="loadNum">0%</p>
@@ -139,7 +114,7 @@
     <div class="videoContainer">
       <img class="titleImg" src=""/>
       <p class="content"></p>
-      <iframe></iframe>
+      <iframe class="videoFrame" style="z-index:1;" src="" allowfullscreen="" frameborder="0" ></iframe>
     </div>
   </div>
   <!-- videoWrap ends -->
@@ -168,20 +143,20 @@
       </div>
       <div class="swiper-container gallery-container animated">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="img/jpg/luhan-1.jpg"/>
+          <div class="swiper-slide" data-img="1">
+            <img src=""/>
           </div>
-          <div class="swiper-slide">
-           <img src="img/jpg/luhan-2.jpg"/>
+          <div class="swiper-slide" data-img="2">
+           <img src=""/>
           </div>
-          <div class="swiper-slide">
-            <img src="img/jpg/luhan-3.jpg"/>
+          <div class="swiper-slide" data-img="3">
+            <img src=""/>
           </div>
-          <div class="swiper-slide">
-            <img src="img/jpg/luhan-4.jpg"/>
+          <div class="swiper-slide" data-img="4">
+            <img src=""/>
           </div>
-          <div class="swiper-slide">
-            <img src="img/jpg/luhan-5.jpg"/>
+          <div class="swiper-slide" data-img="5">
+            <img src=""/>
           </div>
          
         </div>
@@ -214,40 +189,40 @@
         <div class="swiper-container ring-container">
           <div class="swiper-wrapper">
              <div class="swiper-slide" data-ring="0">
-              <img src="img/ring/1.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="1">
-              <img src="img/ring/2.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="2">
-              <img src="img/ring/3.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="3">
-              <img src="img/ring/4.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="4">
-              <img src="img/ring/5.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="5">
-              <img src="img/ring/6.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="6">
-              <img src="img/ring/7.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="7">
-              <img src="img/ring/8.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="8">
-              <img src="img/ring/9.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="9">
-              <img src="img/ring/10.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="10">
-              <img src="img/ring/11.png"/>
+              <img src=""/>
             </div>
             <div class="swiper-slide" data-ring="11">
-              <img src="img/ring/12.png"/>
+              <img src=""/>
             </div>
           </div> 
         </div>
@@ -265,6 +240,9 @@
     </div>
     <a href="http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97.html" class="shopBtn">在线购买</a>
   </div>
+  <!-- audio -->
+  <audio src="Cartier-bg-music.mp3"  id="audio" autoplay loop></audio>
+  <!-- audio end-->
   <!-- shopWrap ends -->
   <!-- js -->
     <script src="js/delaunay.js"></script>
@@ -277,7 +255,11 @@
     <!-- Swiper JS -->
     <script src="js/swiper.min.js"></script>
     <script src="js/main.js"></script>
-
+    <script type="text/javascript">
+          //tracking GA code 
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-25338682-37', 'auto');
+      ga('send', 'pageview');</script>
     <script>
       var krpano;
       //var hostname=s.cookie.get("hostname");
@@ -317,26 +299,6 @@
         headBar.children[0].classList.remove('dn');
         headBar.children[2].classList.remove('dn');
       }
-   // $(".load").hide();
-      //var points = document.getElementById("krpanoSWFObject");
-      //points.get("hotspot['hs11']").style.opacity=0;
-      //points.set("hotspot['hs11']").visible = false;
-      // set(points.get("hotspot['hs11']").visible, false);
-      // set(points.get("hotspot['hs22']").visible, false);
-      // set(points.get("hotspot['hs33']").visible, false);
-      // set(points.get("hotspot['hs44']").visible, false);
-      // set(points.get("hotspot['hs55']").visible, false);
-      //points.get("hotspot['hs22']").style.opacity=0;
-      //points.get("hotspot['hs22']").alpha=count1;
-      //points.get("hotspot['hs33']").style.opacity=0;
-      //points.get("hotspot['hs44']").style.opacity=0;
-      
-      //points.get("hotspot['hs55']").style.opacity=0;
-    
-      // if(hostname){
-      //   krpano = document.getElementById("krpanoSWFObject");
-      //   //krpano.call("looktohotspot("+hostname+",90)");
-      // }
       var krpano = document.getElementById("krpanoSWFObject");
       krpano.get("hotspot['hs11']").visible='true';
       krpano.get("hotspot['hs22']").visible='true';
@@ -353,7 +315,7 @@
       krpano.get("hotspot['hs6']").visible='true';
       krpano.get("hotspot['hs7']").visible='true';
 
-      window.setInterval(animatepoint,100);
+      window.setInterval(animatepoint,125);
     }
 
     var count = 0.5;
