@@ -195,7 +195,7 @@ var loadcompleted = false;
         validTracking('Experience');
 	}
 	function triangulate() {
-    	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},{r: 300,c: 12}],//{r: 1200,c: 12}
+    	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},{r: 300,c: 12},{r: 1200,c: 12}],//{r: 1200,c: 12}
         	x, y, centerX = clickPosition[0], centerY = clickPosition[1];
     	vertices.push([centerX,centerY]);
     	rings.forEach(function (ring) {
@@ -223,6 +223,7 @@ var loadcompleted = false;
             fragment.dx = fragment.centroid[0] - clickPosition[0], fragment.dy = fragment.centroid[1] - clickPosition[1], fragment.d = Math.sqrt(fragment.dx * fragment.dx + fragment.dy * fragment.dy);
             //, delay = d * 0.003 * randomRange(0.1, 0.25)
             fragment.canvas.style.zIndex = Math.floor(fragment.d).toString();
+            fragment.canvas.style.display='none';
             // var tl1 = new TimelineMax();
             // tl1.to(fragment.canvas, randomRange(0.2,1.6), {
             //     z: randomRange(-1500, 1500),
@@ -235,10 +236,10 @@ var loadcompleted = false;
             // tl1.to(fragment.canvas, 0.4, { alpha: 0 }, 0.6);
             // tl0.insert(tl1, 0.2);
             fragments.push(fragment);
-
-            // container.appendChild(fragment.canvas);
+            container.appendChild(fragment.canvas);
         }
-         console.log(fragments);
+        
+        console.log(fragments);
     }
 	function shatter() {
     	// var p0, p1, p2;
@@ -267,7 +268,8 @@ var loadcompleted = false;
      //    	fragments.push(fragment);
      //    	container.appendChild(fragment.canvas);
     	// }
-        for(var i =0;i<fragments.length;i+=3){
+        for(var i =0;i<fragments.length;i++){
+            fragments[i].canvas.style.display = 'block';
             var rx = 300 * sign(fragments[i].dy), ry = 900 * -sign(fragments[i].dx); 
             var tl1 = new TimelineMax();
 
@@ -275,15 +277,16 @@ var loadcompleted = false;
                 z: randomRange(-1500, 1500),
                 rotationX: rx,
                 rotationY: ry,
-                 x: randomRange(-2000, 2000),
+                x: randomRange(-2000, 2000),
                 y: randomRange(-2000, 2000),
                 ease: Expo.easeInOut
             });
-            tl1.to(fragments[i].canvas, 0.4, { alpha: 0 }, 0.6);
+            tl1.to(fragments[i].canvas, 0.4, { alpha: 0 }, 2);
             tl0.insert(tl1, 0.2);
             // fragments.push(fragment);
-            container.appendChild(fragments[i].canvas);
+            
         }
+        //container.appendChild(fragments);
         container.removeChild(image);
         if(overlay.classList.contains('dn')){
             overlay.classList.remove('dn');
