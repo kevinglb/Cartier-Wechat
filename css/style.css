@@ -78,23 +78,14 @@ a{color: #fff;text-decoration: none;}
 .videoWrap, .galleryWrap, .shopWrap{
     transition: all 350ms ease-in-out;
     transform: translate3d(0,100%,0);
+    background-image: url('../img/jpg/video-bg.jpg'); 
+    background-size: cover;
 }
 .videoWrap.visible, .galleryWrap.visible, .shopWrap.visible{
     transform: translate3d(0,0,0);
     z-index: 3;
 }
-.videoWrap:after, .shopWrap:after, .galleryWrap:after {
-    content : "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url('../img/jpg/video-bg.jpg'); 
-    width: 100%;
-    height: 100%;
-    opacity : 0.98;
-    z-index: -1;
-}
+
 .videoContainer, .galleryContainer, .shopContainer{
     padding-top: 0.4rem;
     width: 82%;
@@ -465,22 +456,6 @@ a{color: #fff;text-decoration: none;}
 }
 /*headBar part*/
 
-/*background setting*/
-/*.galleryImg[data-target='0']{
-    background-image: url('../img/jpg/luhan-1.jpg')
-}
-.galleryImg[data-target='1']{
-    background-image: url('../img/jpg/luhan-2.jpg')
-}
-.galleryImg[data-target='2']{
-    background-image: url('../img/jpg/luhan-3.jpg')
-}
-.galleryImg[data-target='3']{
-    background-image: url('../img/jpg/luhan-4.jpg')
-}
-.galleryImg[data-target='4']{
-    background-image: url('../img/jpg/luhan-5.jpg')
-}*/
 
 /*animation*/
 
