@@ -182,7 +182,7 @@ var loadcompleted = false;
     	clickPosition[0] = event.clientX - left;
     	clickPosition[1] = event.clientY - top;
         image.style.opacity = 1;
-    	triangulate();
+    	//triangulate();
 
         window.setTimeout(function(){
             shatter();
