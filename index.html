@@ -214,6 +214,7 @@
 
 
     function loadcomplete(){
+      loadcompleted = true;
       //show menubtn and musicbtn
       var headBar = document.getElementsByClassName('mainWrap')[0].children[0];
       if(headBar.children[0].classList.contains('dn') && headBar.children[2].classList.contains('dn')){
