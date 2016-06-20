@@ -119,7 +119,7 @@ var loadcompleted = false;
 			// } 
 			window.setTimeout(function(){
 				if(!spinner.classList.contains('rotating')){
-					spinner.classList += ' rotating';
+					spinner.classList.add('rotating');
 				}
 			},500);
 		  }
