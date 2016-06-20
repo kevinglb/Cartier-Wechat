@@ -121,6 +121,7 @@ var loadcompleted = false;
 				if(!spinner.classList.contains('rotating')){
 					spinner.classList.add('rotating');
 				}
+                loadWrap.addEventListener('click', imageClickHandler);
 			},500);
 		  }
 				// },20);
@@ -173,7 +174,7 @@ var loadcompleted = false;
     	image = images[imageIndex];
     	if (++imageIndex === images.length)
         imageIndex = 0;
-    	loadWrap.addEventListener('click', imageClickHandler);
+    	
         image.style.opacity = 0;
         container.appendChild(image);
     }
@@ -226,7 +227,7 @@ var loadcompleted = false;
         	//, delay = d * 0.003 * randomRange(0.1, 0.25)
         	fragment.canvas.style.zIndex = Math.floor(d).toString();
         	var tl1 = new TimelineMax();
-        	tl1.to(fragment.canvas, randomRange(0.2,1.5), {
+        	tl1.to(fragment.canvas, randomRange(0.2,1.6), {
            		z: randomRange(-1500, 1500),
             	rotationX: rx,
             	rotationY: ry,
@@ -235,7 +236,7 @@ var loadcompleted = false;
             	ease: Expo.easeInOut
         	});
         	tl1.to(fragment.canvas, 0.4, { alpha: 0 }, 0.6);
-        	tl0.insert(tl1, 0.1);
+        	tl0.insert(tl1, 0.2);
         	fragments.push(fragment);
         	container.appendChild(fragment.canvas);
     	}
