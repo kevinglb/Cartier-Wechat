@@ -4,6 +4,7 @@
 	<image type="CUBE" prealign="">
 	    <cube url="img/jpg/360_%s.jpg" />
 	</image>
+	<events onloadcomplete="loadcomplete"/>
 	<!-- <action name="hotclick">
 		 js(abc());
 	 </action>-->	 
@@ -113,7 +114,6 @@
 	         ty="0"
 	         tz="0"
 	         />
-
 	<hotspot name="hs6" url="img/png/btn7.png" 
 	         ath="123.712878" atv="11.763777" scale="0.5" width="342" height="310" 
 	         visible="false"
@@ -144,4 +144,5 @@
 	<!-- <action name="hotclick5">js(hostPointClick('gallery','','hs5');validTracking('Video-Photo'));</action> -->
 	<action name="hotclick6">js(showWrap('gallery','','hs6');validTracking('Video-Photo'));</action>
 	<action name="hotclick7">js(showWrap('shop','','hs7');validTracking('Video-Juste'));</action>
+	<action name="loadcomplete">js(loadcomplete());</action>
 </krpano>

@@ -26,7 +26,7 @@
     </script>
 </head>
 <body>
-  <img src="img/jpg/tag-img.jpg"/ class="dn">
+  <img src="img/jpg/tag-img.jpg" class="tag-img"/>
   <!-- loadWrap starts -->
   <div class="loadWrap">
     <div class="headBar">
@@ -36,7 +36,7 @@
     <div class="loadContainer">
       <div class="numContainer">
         <p class="loadNum">0%</p>
-        <div class="logoContainer dn">
+        <div class="logoContainer">
           <img src="img/png/load-logo.png" class="loadLogo dn"/>
         </div>
       </div>
@@ -173,6 +173,8 @@
 
   <script type="text/javascript" src="js/load.js"></script>  
   <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="js/clipPath.js"></script>
+
   <script type="text/javascript">
   var settings = {
           swf:"js/krpano.swf",
@@ -233,7 +235,7 @@
       // krpano.get("hotspot['hs5']").visible='true';
       krpano.get("hotspot['hs6']").visible='true';
       krpano.get("hotspot['hs7']").visible='true';
-
+      console.log('load complete');
       window.setInterval(animatepoint,125);
     }
 
