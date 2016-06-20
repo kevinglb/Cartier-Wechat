@@ -120,7 +120,8 @@ var loadcompleted = false;
 			window.setTimeout(function(){
 				if(!spinner.classList.contains('rotating')){
 					spinner.classList.add('rotating');
-				}
+				    
+                }
                 loadWrap.addEventListener('click', imageClickHandler);
 			},500);
 		  }
@@ -137,7 +138,7 @@ var loadcompleted = false;
 	const TWO_PI = Math.PI * 2;
 	var images = [], imageIndex = 0;
 	var image;
-	var vertices = [], indices = [], fragments = [];
+	var vertices = [], indices = [], fragments = [], fragment;
 	var container = document.getElementById('container');
 	var imageWidth = window.innerWidth, imageHeight = window.innerHeight;
 	var clickPosition = [imageWidth * 0.5,imageHeight * 0.5];
@@ -212,34 +213,77 @@ var loadcompleted = false;
     	//console.log(vertices);
     	indices = Delaunay.triangulate(vertices);
     	//console.log(indices);
-	}
+
+        var p0, p1, p2;
+	    for (var i = 0; i < indices.length; i += 3) {
+            p0 = vertices[indices[i + 0]];
+            p1 = vertices[indices[i + 1]];
+            p2 = vertices[indices[i + 2]];
+            fragment = new Fragment(p0, p1, p2);
+            fragment.dx = fragment.centroid[0] - clickPosition[0], fragment.dy = fragment.centroid[1] - clickPosition[1], fragment.d = Math.sqrt(fragment.dx * fragment.dx + fragment.dy * fragment.dy);
+            //, delay = d * 0.003 * randomRange(0.1, 0.25)
+            fragment.canvas.style.zIndex = Math.floor(fragment.d).toString();
+            // var tl1 = new TimelineMax();
+            // tl1.to(fragment.canvas, randomRange(0.2,1.6), {
+            //     z: randomRange(-1500, 1500),
+            //     rotationX: rx,
+            //     rotationY: ry,
+            //     x: randomRange(-2000, 2000),
+            //     y: randomRange(-2000, 2000),
+            //     ease: Expo.easeInOut
+            // });
+            // tl1.to(fragment.canvas, 0.4, { alpha: 0 }, 0.6);
+            // tl0.insert(tl1, 0.2);
+            fragments.push(fragment);
+
+            // container.appendChild(fragment.canvas);
+        }
+         console.log(fragments);
+    }
 	function shatter() {
-    	var p0, p1, p2, fragment;
+    	// var p0, p1, p2;
     	var tl0 = new TimelineMax({ onComplete: shatterCompleteHandler });
 
         loadContainer.classList.add('dn');
-   	 	for (var i = 0; i < indices.length; i += 3) {
-       		p0 = vertices[indices[i + 0]];
-        	p1 = vertices[indices[i + 1]];
-        	p2 = vertices[indices[i + 2]];
-        	fragment = new Fragment(p0, p1, p2);
-        	var dx = fragment.centroid[0] - clickPosition[0], dy = fragment.centroid[1] - clickPosition[1], d = Math.sqrt(dx * dx + dy * dy), rx = 300 * sign(dy), ry = 900 * -sign(dx);
-        	//, delay = d * 0.003 * randomRange(0.1, 0.25)
-        	fragment.canvas.style.zIndex = Math.floor(d).toString();
-        	var tl1 = new TimelineMax();
-        	tl1.to(fragment.canvas, randomRange(0.2,1.6), {
-           		z: randomRange(-1500, 1500),
-            	rotationX: rx,
-            	rotationY: ry,
-            	x: randomRange(-2000, 2000),
-            	y: randomRange(-2000, 2000),
-            	ease: Expo.easeInOut
-        	});
-        	tl1.to(fragment.canvas, 0.4, { alpha: 0 }, 0.6);
-        	tl0.insert(tl1, 0.2);
-        	fragments.push(fragment);
-        	container.appendChild(fragment.canvas);
-    	}
+   	 // 	for (var i = 0; i < indices.length; i += 3) {
+     //   		p0 = vertices[indices[i + 0]];
+     //    	p1 = vertices[indices[i + 1]];
+     //    	p2 = vertices[indices[i + 2]];
+     //    	fragment = new Fragment(p0, p1, p2);
+     //    	var dx = fragment.centroid[0] - clickPosition[0], dy = fragment.centroid[1] - clickPosition[1], d = Math.sqrt(dx * dx + dy * dy), rx = 300 * sign(dy), ry = 900 * -sign(dx);
+     //    	//, delay = d * 0.003 * randomRange(0.1, 0.25)
+     //    	fragment.canvas.style.zIndex = Math.floor(d).toString();
+     //    	var tl1 = new TimelineMax();
+     //    	tl1.to(fragment.canvas, randomRange(0.2,1.6), {
+     //       		z: randomRange(-1500, 1500),
+     //        	rotationX: rx,
+     //        	rotationY: ry,
+     //        	x: randomRange(-2000, 2000),
+     //        	y: randomRange(-2000, 2000),
+     //        	ease: Expo.easeInOut
+     //    	});
+     //    	tl1.to(fragment.canvas, 0.4, { alpha: 0 }, 0.6);
+     //    	tl0.insert(tl1, 0.2);
+     //    	fragments.push(fragment);
+     //    	container.appendChild(fragment.canvas);
+    	// }
+        for(var i =0;i<fragments.length;i+=3){
+            var rx = 300 * sign(fragments[i].dy), ry = 900 * -sign(fragments[i].dx); 
+            var tl1 = new TimelineMax();
+
+            tl1.to(fragments[i].canvas, randomRange(0.2,1.6), {
+                z: randomRange(-1500, 1500),
+                rotationX: rx,
+                rotationY: ry,
+                 x: randomRange(-2000, 2000),
+                y: randomRange(-2000, 2000),
+                ease: Expo.easeInOut
+            });
+            tl1.to(fragments[i].canvas, 0.4, { alpha: 0 }, 0.6);
+            tl0.insert(tl1, 0.2);
+            // fragments.push(fragment);
+            container.appendChild(fragments[i].canvas);
+        }
         container.removeChild(image);
         if(overlay.classList.contains('dn')){
             overlay.classList.remove('dn');
