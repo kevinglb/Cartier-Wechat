@@ -381,8 +381,23 @@ a{color: #fff;text-decoration: none;}
 .loadSpinner.rotating{
     display: block;
     animation: rotating 6000ms infinite linear;
+    -webkit-animation:rotating 6000ms infinite linear; 
+    -moz-animation:rotating 6000ms infinite linear;
 }
-@keyframes rotating {
+@-webkit-keyframes rotating{
+  from  { -webkit-transform: rotate(0deg)}
+  100% { -webkit-transform: rotate(360deg)}
+}
+@-moz-keyframes rotating{
+  0%   {-moz-transform: rotate(0deg)}
+  100% { -moz-transform: rotate(360deg)}
+}
+@keyframes rotating{
+  0%   { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+/*@keyframes rotating {
     from {-moz-transform: rotate(0deg);
           -webkit-transform: rotate(0deg);
           -o-transform: rotate(0deg);
@@ -393,7 +408,7 @@ a{color: #fff;text-decoration: none;}
         -o-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
         transform: rotate(360deg);}
-}
+}*/
 #container {
     position: absolute;
     width: 100%;
