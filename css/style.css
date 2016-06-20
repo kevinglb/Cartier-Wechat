@@ -382,8 +382,16 @@ a{color: #fff;text-decoration: none;}
     animation: rotating 6000ms infinite linear;
 }
 @keyframes rotating {
-    from {-webkit-transform:rotate(0deg);transform:rotate(0deg);}
-    to {-webkit-transform:rotate(360deg);transform:rotate(360deg);}
+    from {-moz-transform: rotate(0deg);
+          -webkit-transform: rotate(0deg);
+          -o-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);}
 }
 #container {
     position: absolute;
@@ -494,3 +502,29 @@ a{color: #fff;text-decoration: none;}
   -webkit-animation-name: zoomOut;
   animation-name: zoomOut;
 }
+
+
+/*clipPath css*/
+.clip[style] {
+    opacity: 1;
+}
+.active .clip:not([style]) {
+    opacity: 1;
+    animation: fadeOut .1s .4s both;
+}
+.active .clip[style] {
+    will-change: transform;
+    animation: noTransform .5s both;
+}
+
+@keyframes noTransform {
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) rotate(0);
+    }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
