@@ -1,3 +1,4 @@
+var loadcompleted = false;
 (function(){
 	var circle = document.getElementById('loadCircle'),
 		loadContainer = document.getElementsByClassName('loadContainer')[0],
@@ -12,7 +13,9 @@
 		spinner = document.getElementsByClassName('loadSpinner')[0],
 	    overlay = document.getElementsByClassName('overlay')[0],
         navi = document.getElementsByClassName('navi')[0],
-		a = 0;
+		a = 0,
+        b = 0;
+        
         //img/png/load-spinner.png
 	// var b=setInterval(function(){
 	// 	if (num<=numLength) {//百分比
@@ -57,67 +60,76 @@
 	loadImg();
     //'img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
 	function loadImg(){
-		var imgArr = ['img/png/load-spinner.png','img/jpg/index-bg.jpg','img/png/glass-bg.png','img/png/btn1.png','img/png/btn2.png','img/png/btn3.png','img/png/btn4.png','img/png/btn6.png','img/png/btn7.png'];
-		var num = 0,
+		var imgArr = ['img/jpg/index-bg.jpg','img/png/load-spinner.png','img/png/glass-bg.png','img/png/btn1.png','img/png/btn2.png','img/png/btn3.png','img/png/btn4.png','img/png/btn6.png','img/png/btn7.png'];
+		var num = 1,
 			len = imgArr.length;
 		for(var i=0;i<imgArr.length;i++){
             var image = new Image();
             image.src = imgArr[i];
-            //imgArr[i].image= image;
-            image.onload = function(){
+            // image.onload = function(){
+            //     num++;
+            // };
+        }
+        b = window.setInterval(function(){
+            if(loadcompleted){
                 num++;
                 updateLoader(num,len);
-            };
-        }
+            }else{
+                num++;
+                len++;
+                updateLoader(num,len);
+            }
+        },50);
+
         if(!spinner.getAttribute('src')){
             spinner.setAttribute('src', 'img/png/load-spinner.png');
         }
     }
     function updateLoader(num,len){
-        if(num){
-                // var b=setInterval(function(num){
-                    
-					if (num!=len) {//百分比
-						a = num/len*290;//310为最后弧度
-						index = parseInt(num/len*100);
-						percentage.innerHTML = index + '%'
-						ctx.beginPath();
-						ctx.arc(cx,cy,circle.width*0.47, -45*Math.PI/180, a*Math.PI/180);
-						ctx.lineWidth = 2;
-						ctx.strokeStyle="#fff";
-						ctx.stroke();//圆
-						ctx.closePath();
-					}else{
-					   //clear the interval
-						// window.clearInterval(b);
-						// b = 0;
-						//swith the cavas circle with the img one
-
-						circle.style.display = 'none';
+        if(num && len){
+        // var b=setInterval(function(num){
+		  if (num!=len) {//百分比
+			a = num/len*290;//310为最后弧度
+			index = parseInt(num/len*100);
+			percentage.innerHTML = index + '%'
+			ctx.beginPath();
+			ctx.arc(cx,cy,circle.width*0.47, -45*Math.PI/180, a*Math.PI/180);
+			ctx.lineWidth = 2;
+			ctx.strokeStyle="#fff";
+			ctx.stroke();//圆
+			ctx.closePath();
+		  }else{
+			//clear the interval
+			// window.clearInterval(b);
+			// b = 0;
+			//swith the cavas circle with the img one
+            window.clearInterval(b);
+            b = 0;
+			circle.style.display = 'none';
                         //circle.style.display = 'none';
-                        percentage.style.display = 'none';
-						spinner.classList.remove('dn');
-                        loadLogo.classList.remove('dn');
-						if(!loadContainer.classList.contains('expand')){
-							loadContainer.classList.add('expand');  
-						} 
-                        //percentage.classList.add('dn');
-						// if(!circle.classList.contains('expand')){
-						// 	circle.classList.add(' expand');
-						// } 
-						window.setTimeout(function(){
-						    if(!spinner.classList.contains('rotating')){
-							 spinner.classList += ' rotating';
-							}
-						},500);
-					}
+            percentage.style.display = 'none';
+			spinner.classList.remove('dn');
+            loadLogo.classList.remove('dn');
+			if(!loadContainer.classList.contains('expand')){
+				loadContainer.classList.add('expand');  
+			} 
+            //percentage.classList.add('dn');
+			// if(!circle.classList.contains('expand')){
+			// 	circle.classList.add(' expand');
+			// } 
+			window.setTimeout(function(){
+				if(!spinner.classList.contains('rotating')){
+					spinner.classList += ' rotating';
+				}
+			},500);
+		  }
 				// },20);
                 // if(num >= imgArr.length && typeof callback == "function"){
                 //     //console.log(callback);
                 //     callback(); //the default 'this' in callback will refer to window scoop
                 // };
-            }
         }
+    }
 	
     
 	//variables for glass effect
@@ -181,7 +193,7 @@
         validTracking('Experience');
 	}
 	function triangulate() {
-    	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},,{r: 300,c: 12},{r: 1200,c: 12}],
+    	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},{r: 300,c: 12}],//{r: 1200,c: 12}
         	x, y, centerX = clickPosition[0], centerY = clickPosition[1];
     	vertices.push([centerX,centerY]);
     	rings.forEach(function (ring) {
