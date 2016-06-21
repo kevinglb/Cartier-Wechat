@@ -10,9 +10,10 @@
 	initHeadBar();
 	window.setTimeout(function(){
 		initMenu();
-	},500);	
-	//initShopWrap();
-	//initGalleryWrap();
+		initShopWrap();
+		initGalleryWrap();
+	},1000);	
+	
 	// initMusic();
 
 	//init the menu by assigning the img src and bind click functions
@@ -147,7 +148,9 @@
 		$('.videoContainer .titleImg').attr('src',obj['titleImg']);
 		$('.videoContainer .content').text(obj['text']);
 		$('.videoContainer .videoFrame').css('height',h);
-		$('.videoContainer .videoFrame').attr('src',obj['src']+'width='+w+'&amp;height='+h+'&amp;auto=0');
+		$('.videoContainer .videoFrame').attr('src','http://v.qq.com/iframe/player.html?vid=i03021lj2zr&amp;'+'width='+w+'&amp;height='+h+'&amp;auto=0');
+		//http://v.qq.com/iframe/player.html?vid=i03021lj2zr&tiny=0&auto=0" allowfullscreen></iframe>
+		//$('.videoContainer .videoFrame').attr('src',obj['src']+'width='+w+'&amp;height='+h+'&amp;auto=0');
 		toggleWrap('video');
 	}
 
