@@ -24,11 +24,6 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
       })(document, window);
     </script>
-    <style type="text/css">
-    .loadBg{position: absolute;width: 100%;height: 100%;top: 0;left: 0;z-index: -1}
-    img.loadBg{opacity: 1;transition: opacity 200ms;}
-    img[data-src]{opacity: 0}
-    </style>
 </head>
 <body>
   <img src="img/jpg/tag-img.jpg" class="tag-img"/>
@@ -52,7 +47,7 @@
       </svg>
       <img src="" class="loadSpinner dn"/>
     </div>
-    <img data-src="img/jpg/index-bg.jpg" class="loadBg"/>
+
   </div>
   <!-- loadWrap ends -->
 
@@ -177,21 +172,14 @@
   <!-- audio end-->
   <!-- shopWrap ends -->
   <!-- js -->
-  <script type="text/javascript">
-  [].forEach.call(document.querySelectorAll('img[data-src]'), function(img) {
-  img.setAttribute('src', img.getAttribute('data-src'));
-  img.onload = function() {
-    img.removeAttribute('data-src');
-  };
-});</script>
-  <script src="js/delaunay.min.js"></script>
-  <script src="js/TweenMax.min.js"></script>
-  <script src="js/s.min.js"></script>
-  <script src="js/embedpano.js"></script>
+  <script sync src="js/delaunay.min.js"></script>
+  <script sync src="js/TweenMax.min.js"></script>
+  <script sync src="js/s.min.js"></script>
+  <script sync src="js/embedpano.js"></script>
 
-  <script type="text/javascript" src="js/load.js"></script>  
-  <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
-  <script type="text/javascript" src="js/clipPath.js"></script>
+  <script sync type="text/javascript" src="js/load.js"></script>  
+  <script sync type="text/javascript" src="js/jquery-1.11.3.js"></script>
+  <!-- <script type="text/javascript" src="js/clipPath.js"></script> -->
 
   <script type="text/javascript">
   var settings = {
