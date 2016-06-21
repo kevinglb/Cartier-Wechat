@@ -24,6 +24,23 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
       })(document, window);
     </script>
+    <style>
+    .r-progress-bar{
+      position: absolute;
+      top: 0;left: 0;
+    }
+    .r-progress-bar > circle {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s ease;
+  stroke: #2B2B2B;
+  stroke-width: 3px;
+}
+.r-progress-bar > .bar {
+  stroke: #fff;
+  transform:rotate(-45deg);
+  transform-origin:50% 50%;
+}
+    </style>
 </head>
 <body>
   <img src="img/jpg/tag-img.jpg" class="tag-img"/>
@@ -40,7 +57,11 @@
           <img src="img/png/load-logo.png" class="loadLogo dn"/>
         </div>
       </div>
-      <canvas id="loadCircle" width="100" height="100"></canvas>
+      <canvas id="loadCircle" width="100" height="100" style="display:none"></canvas>
+      <svg class="r-progress-bar" width="100" height="100" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="bar" r="48" cx="50" cy="50" fill="transparent" stroke-dasharray="301.59" stroke-dashoffset="295.561" style="stroke-dashoffset:301.593"></circle>
+        <line x1="80" x2="89" y1="21" y2="12" stroke-width="3" fill="transparent" stroke="#fff" ></line>
+      </svg>
       <img src="" class="loadSpinner dn"/>
     </div>
   </div>
@@ -63,11 +84,11 @@
       <a class="menuLink" data-type="video" data-para="lisa" data-track="Lisa"><img src=""/></a>
       <a class="menuLink" data-type="gallery" data-para="gallery" data-track="Photo"><img src=""/></a>
       <a class="menuLink" data-type="shop" data-para="shop" data-track="Juste"><img src=""/></a>       
-      <a href="www.cartier.com">详情请上卡地亚网站: www.cartier.com</a>
+      <a href="www.cartier.com">详情请上卡地亚网站:<br/> www.cartier.com</a>
     </div>
     <div id="pano"></div>
     <img class="navi dn" src="img/png/index-navi.png"/>
-    <div class="overlay dn"></div>
+    <!-- <div class="overlay dn"></div> -->
   </div>
   <!-- mainWrap ends -->
   <!-- videoWrap starts -->
@@ -119,6 +140,7 @@
       <div class="swiper-button-next swiper-btn">
         <img src="img/png/btn-next.png"/>
       </div>
+      <a class="galleryBtn dn"><img src=""/></a>
       <div class="clearfix"></div>
     </div>
   </div>
@@ -159,7 +181,7 @@
         <div class="ring-info"><p></p></div>
       </div>
     </div>
-    <a href="http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97.html" class="shopBtn">在线购买</a>
+    <a  href="http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97.html" class="shopBtn">在线购买</a>
   </div>
   <!-- audio -->
   <audio src=""  id="audio" autoplay loop></audio>
@@ -268,6 +290,35 @@
       krpano.get("hotspot['hs77']").scale=count;
       krpano.get("hotspot['hs77']").alpha=count1;
   }
+</script>
+<script>
+
+
+$btn.addEventListener('click', function(evt) {
+  // var val = incrementProgress(
+  //   $wrapper.getAttribute('data-percentage')
+  // );
+  var r = $circle.getAttribute('r');
+  var c = Math.PI * (r * 2);
+  var pct = ((100 - val)/100) * c;
+  $circle.style.strokeDashoffset = pct;
+  
+  $text.innerText = val*1.1 + '%';
+  //$wrapper.setAttribute('data-percentage', val);
+});
+
+function incrementProgress(val) {
+  val = parseInt(val, 10);
+  var min = 2;
+  var max = 25;
+  var incremented;
+  
+  return (incremented = val + random(min, max)) >= 100? 0: incremented;
+}
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 </script>
 </body>
 </html>

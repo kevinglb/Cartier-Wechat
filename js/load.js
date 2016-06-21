@@ -11,11 +11,14 @@ var loadcompleted = false;
 		numLength = 50,//图片总数量
 		percentage = document.getElementsByClassName('loadNum')[0],
 		spinner = document.getElementsByClassName('loadSpinner')[0],
-	    overlay = document.getElementsByClassName('overlay')[0],
+	    //overlay = document.getElementsByClassName('overlay')[0],
         navi = document.getElementsByClassName('navi')[0],
 		a = 0,
         b = 0;
-        
+
+    //svg part
+    var $svg = document.querySelector('.r-progress-bar'),
+        $circle = document.querySelector('.r-progress-bar > .bar');
         //img/png/load-spinner.png
 	// var b=setInterval(function(){
 	// 	if (num<=numLength) {//百分比
@@ -88,16 +91,20 @@ var loadcompleted = false;
     function updateLoader(num,len){
         if(num && len){
         // var b=setInterval(function(num){
-		  if (num!=len) {//百分比
-			a = num/len*290;//310为最后弧度
-			index = parseInt(num/len*100);
+		  if (num != len) {//百分比
+			// a = num/len*290;//310为最后弧度
+			index = parseInt(num/len * 100);
 			percentage.innerHTML = index + '%'
-			ctx.beginPath();
-			ctx.arc(cx,cy,circle.width*0.47, -45*Math.PI/180, a*Math.PI/180);
-			ctx.lineWidth = 2;
-			ctx.strokeStyle="#fff";
-			ctx.stroke();//圆
-			ctx.closePath();
+			// ctx.beginPath();
+			// ctx.arc(cx,cy,circle.width*0.47, -45*Math.PI/180, a*Math.PI/180);
+			// ctx.lineWidth = 2;
+			// ctx.strokeStyle="#fff";
+			// ctx.stroke();//圆
+			// ctx.closePath();
+            var r = $circle.getAttribute('r');
+            var c = Math.PI * (r * 2);
+            var pct = ((100 - index)/100) * c;
+            $circle.style.strokeDashoffset = pct;
 		  }else{
 			//clear the interval
 			// window.clearInterval(b);
@@ -105,6 +112,7 @@ var loadcompleted = false;
 			//swith the cavas circle with the img one
             window.clearInterval(b);
             b = 0;
+            $svg.style.display = 'none';
 			circle.style.display = 'none';
                         //circle.style.display = 'none';
             percentage.style.display = 'none';
@@ -239,7 +247,7 @@ var loadcompleted = false;
             container.appendChild(fragment.canvas);
         }
         
-        console.log(fragments);
+        //console.log(fragments);
     }
 	function shatter() {
     	// var p0, p1, p2;
@@ -288,9 +296,9 @@ var loadcompleted = false;
         }
         //container.appendChild(fragments);
         container.removeChild(image);
-        if(overlay.classList.contains('dn')){
-            overlay.classList.remove('dn');
-        }
+        // if(overlay.classList.contains('dn')){
+        //     overlay.classList.remove('dn');
+        // }
         if(navi.classList.contains('dn')){
             navi.classList.remove('dn');
         }
@@ -299,17 +307,17 @@ var loadcompleted = false;
         
         window.setTimeout(function(){
             loadWrap.classList.add('dn');
-            overlay.classList.add('fadeOut');
+            //overlay.classList.add('fadeOut');
             navi.classList.add('fadeOut');
             loadcomplete();
         },2500);
     	
         window.setTimeout(function(){
-            overlay.classList.remove('fadeOut');
-            overlay.classList.add('dn');
+           // overlay.classList.remove('fadeOut');
+           // overlay.classList.add('dn');
             navi.classList.remove('fadeOut');
             navi.classList.add('dn');
-            overlay.addEventListener('click',toggleMenu);
+           // overlay.addEventListener('click',toggleMenu);
             initMusic();
         },4000);
         
