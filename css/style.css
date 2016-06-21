@@ -6,8 +6,8 @@
     other Wraps 3*/
 /*style*/
 @font-face {
-    font-family: 'gotham';
-    src: url('Gotham-Light.otf');
+    font-family: gotham;
+    src: url('Gotham-Light.otf') format('opentype');
 }
  html,body{
     width: 100%;
@@ -31,7 +31,7 @@ img{margin: 0 auto}
 body{position: relative;}
 .clearfix{clear: both;}
 /*fonts*/
-.en{font-family: 'gotham'}
+.en{font-family: gotham}
 a{color: #fff;text-decoration: none;}
 .dn{display: none}
 .swiper-container {
@@ -176,7 +176,7 @@ a{color: #fff;text-decoration: none;}
     width:85%;
     margin: 0 auto;
     position: relative;
-    padding: 0.15rem 0;
+    padding: 0.12rem 0;
     display: block;
     color: #fff;
     font-size: 10px;
@@ -186,7 +186,13 @@ a{color: #fff;text-decoration: none;}
     padding: 0.08rem 0;
 }
 .menu a:last-child{
-    padding: 0
+    padding: 0;
+    position: absolute;
+    bottom: 0.3rem;
+    display: block;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 /*menu part*/
 
@@ -212,21 +218,21 @@ a{color: #fff;text-decoration: none;}
 }
 .gallery-container{
     position: absolute;
-    width: 90%;
-    left: 5%;
+    width: 100%;
+    left: 0;
     top: 1.2rem;
-    height: 8rem;
+    height: 7.8rem;
 }
 .gallery-container .swiper-slide img{width: 100%;display: block;}
 .galleryContainer .swiper-btn{
     width: 7%;
     top: 1.6rem;
-    height: 8rem;
+    height: 7.8rem;
     background: none;
     cursor: none;
 }
-.galleryContainer .swiper-button-prev{left: -2%;}
-.galleryContainer .swiper-button-next{right: -2%;}
+.galleryContainer .swiper-button-prev{left: -7%;}
+.galleryContainer .swiper-button-next{right: -7%;}
 .galleryContainer .swiper-btn img{
     position: absolute;
     top: 50%;
@@ -235,6 +241,13 @@ a{color: #fff;text-decoration: none;}
 }
 .galleryContainer .swiper-button-prev img{left: 5px}
 .galleryContainer .swiper-button-next img{right: 5px}
+
+.galleryBtn{position: absolute;
+    top: 9.3rem;
+    left: 50%;
+    width: 0.8rem;
+    margin-left: -0.4rem;}
+.galleryBtn img{width: 100%;}
 /* gallertWrap part */
 /* shopWrap part */
 .shopContent{position: relative;}
@@ -448,7 +461,7 @@ a{color: #fff;text-decoration: none;}
 /*headBar part*/
 .headBar{
     width: 100%;
-    background-color: rgba(10,10,10,0.2);
+    background:rgba(10,10,10,0.2);
     min-height: 1.5rem;
 }
 .headBar > img{

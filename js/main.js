@@ -265,5 +265,5 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 	}
 
 	function validTracking(eventName){
-		//ga('360',eventName);
+		ga('360',eventName);
 	}
