@@ -217,7 +217,7 @@ var loadcompleted = false;
             container.style.background = 'transparent';
         },500);
     	//tracking code
-        validTracking('Experience');
+        ga('360','Experience');
 	}
 	function triangulate() {
     	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},{r: 300,c: 12},{r: 1200,c: 12}],//{r: 1200,c: 12}

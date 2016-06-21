@@ -10,10 +10,9 @@
 	initHeadBar();
 	window.setTimeout(function(){
 		initMenu();
-		initShopWrap();
-		initGalleryWrap();
 	},1000);	
-	
+	//initShopWrap();
+	//initGalleryWrap();
 	// initMusic();
 
 	//init the menu by assigning the img src and bind click functions
