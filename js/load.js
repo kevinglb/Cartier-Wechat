@@ -1,6 +1,7 @@
 var loadcompleted = false;
 (function(){
 	 //circle = document.getElementById('loadCircle'),
+
 	var	loadContainer = document.getElementsByClassName('loadContainer')[0],
 		loadWrap = document.getElementsByClassName('loadWrap')[0],
         loadLogo = document.getElementsByClassName('loadLogo')[0],
@@ -19,6 +20,15 @@ var loadcompleted = false;
     //svg part
     var $svg = document.querySelector('.r-progress-bar'),
         $circle = document.querySelector('.r-progress-bar > .bar');
+
+    var indexImg = document.createElement('img');
+    indexImg.src = getBgUrl(loadWrap);
+    indexImg.onload = function(){
+        console.log('index img loaded');
+        loadContainer.classList.remove('dn');
+        loadImg();
+    };
+    
         //img/png/load-spinner.png
 	// var b=setInterval(function(){
 	// 	if (num<=numLength) {//百分比
@@ -60,7 +70,7 @@ var loadcompleted = false;
 	// ctx.lineTo(circle.width*0.87 , circle.height*0.1);
 	// ctx.stroke();//横线
 	// ctx.closePath();
-	loadImg();
+	// loadImg();
     //'img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
 	function loadImg(){
 		var imgArr = ['img/jpg/index-bg.jpg','img/png/load-spinner.png','img/png/glass-bg.png','img/png/btn1.png','img/png/btn2.png','img/png/btn3.png','img/png/btn4.png','img/png/btn6.png','img/png/btn7.png'];
@@ -138,8 +148,17 @@ var loadcompleted = false;
                 // };
         }
     }
-	
-    
+	function getBgUrl(el) {
+        var bg = "";
+        if (document.defaultView && document.defaultView.getComputedStyle) { // Firefox
+            bg = document.defaultView.getComputedStyle(el, "").backgroundImage;
+        }else{ // try and get inline style
+            bg = el.style.backgroundImage;
+        }
+        return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
+    }
+
+
 	//variables for glass effect
 	const TWO_PI = Math.PI * 2;
 	var images = [], imageIndex = 0;
