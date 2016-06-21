@@ -1,12 +1,12 @@
 var loadcompleted = false;
 (function(){
-	var circle = document.getElementById('loadCircle'),
-		loadContainer = document.getElementsByClassName('loadContainer')[0],
+	 //circle = document.getElementById('loadCircle'),
+	var	loadContainer = document.getElementsByClassName('loadContainer')[0],
 		loadWrap = document.getElementsByClassName('loadWrap')[0],
         loadLogo = document.getElementsByClassName('loadLogo')[0],
-		ctx = circle.getContext('2d'),
-		cx = circle.width/2,
-		cy = circle.height/2,
+		// ctx = circle.getContext('2d'),
+		// cx = circle.width/2,
+		// cy = circle.height/2,
 		num = 0,//图片计数器
 		numLength = 50,//图片总数量
 		percentage = document.getElementsByClassName('loadNum')[0],
@@ -100,7 +100,7 @@ var loadcompleted = false;
             var r = $circle.getAttribute('r');
             var c = Math.PI * (r * 2);
             var pct = ((100 - index)/100) * c;
-            if(index <= 98){
+            if(index <= 93){
                 $circle.style.strokeDashoffset = pct;
             }
 		  }else{
@@ -111,7 +111,7 @@ var loadcompleted = false;
             window.clearInterval(b);
             b = 0;
             $svg.style.display = 'none';
-			circle.style.display = 'none';
+			//circle.style.display = 'none';
                         //circle.style.display = 'none';
             percentage.style.display = 'none';
 			spinner.classList.remove('dn');
@@ -274,6 +274,7 @@ var loadcompleted = false;
      //    	fragments.push(fragment);
      //    	container.appendChild(fragment.canvas);
     	// }
+        //go through the canvas to add timeline amination
         for(var i =0;i<fragments.length;i++){
             fragments[i].canvas.style.display = 'block';
             var rx = 300 * sign(fragments[i].dy), ry = 900 * -sign(fragments[i].dx); 
@@ -300,7 +301,6 @@ var loadcompleted = false;
         if(navi.classList.contains('dn')){
             navi.classList.remove('dn');
         }
-        
         loadWrap.removeEventListener('click', imageClickHandler);
         
         window.setTimeout(function(){
@@ -328,7 +328,6 @@ var loadcompleted = false;
     	fragments.length = 0;
     	vertices.length = 0;
     	indices.length = 0;
-    	//placeImage();
 	}
 	function randomRange(min, max) {
     	return min + (max - min) * Math.random();

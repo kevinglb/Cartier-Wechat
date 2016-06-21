@@ -5,6 +5,10 @@
     .mainWrap overlay 1
     other Wraps 3*/
 /*style*/
+@font-face {
+    font-family: 'gotham';
+    src: url('Gotham-Light.otf');
+}
  html,body{
     width: 100%;
     height: 100%;
@@ -27,7 +31,7 @@ img{margin: 0 auto}
 body{position: relative;}
 .clearfix{clear: both;}
 /*fonts*/
-.en{}
+.en{font-family: 'gotham'}
 a{color: #fff;text-decoration: none;}
 .dn{display: none}
 .swiper-container {
