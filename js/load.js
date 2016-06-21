@@ -21,13 +21,13 @@ var loadcompleted = false;
     var $svg = document.querySelector('.r-progress-bar'),
         $circle = document.querySelector('.r-progress-bar > .bar');
 
-    var indexImg = document.createElement('img');
-    indexImg.src = getBgUrl(loadWrap);
-    indexImg.onload = function(){
-        console.log('index img loaded');
-        loadContainer.style.display = 'block';
-        loadImg();
-    };
+    // var indexImg = document.createElement('img');
+    // indexImg.src = getBgUrl(loadWrap);
+    // indexImg.onload = function(){
+    //     console.log('loaded');
+    //     loadContainer.style.opacity = '1';
+    //     loadImg();
+    // };
     
         //img/png/load-spinner.png
 	// var b=setInterval(function(){
@@ -70,7 +70,7 @@ var loadcompleted = false;
 	// ctx.lineTo(circle.width*0.87 , circle.height*0.1);
 	// ctx.stroke();//横线
 	// ctx.closePath();
-	// loadImg();
+	loadImg();
     //'img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
 	function loadImg(){
 		var imgArr = ['img/jpg/index-bg.jpg','img/png/load-spinner.png','img/png/glass-bg.png','img/png/btn1.png','img/png/btn2.png','img/png/btn3.png','img/png/btn4.png','img/png/btn6.png','img/png/btn7.png'];
