@@ -25,7 +25,7 @@ var loadcompleted = false;
     indexImg.src = getBgUrl(loadWrap);
     indexImg.onload = function(){
         console.log('index img loaded');
-        loadContainer.classList.remove('dn');
+        loadContainer.style.display = 'block';
         loadImg();
     };
     
