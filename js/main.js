@@ -108,7 +108,7 @@
 
 	function toggleMenu(){
       	$('.menu').toggleClass('visible');
-      	$('.overlay').toggleClass('dn');
+      	//$('.overlay').toggleClass('dn');
     }
 
     function toggleMusic(musicBtn){
@@ -162,6 +162,7 @@
 
 	function initGalleryWrap(data){
 		$('.galleryWrap .titleImg').attr('src','img/png/title-gallery.png');
+		$('.galleryBtn img').attr('src','img/png/btn-menu.png');
 		initGallerySwiper();
 		$('.galleryWrap').addClass('initialized');
 		
@@ -171,15 +172,22 @@
 		//store brief in array, update after transitionEnd
 		var briefArr = ['Juste un Clou戒指\n18K玫瑰金,钻石','Juste un Clou戒指\r\n白18K金,钻石',
 						'Juste un Clou戒指\r\n18K黄金,钻石','Juste un Clou戒指\n18K金,钻石','Juste un Clou戒指\n18K玫瑰金,钻石',
-						'Juste un Clou戒指\n18K玫瑰金','Juste un Clou戒指\n18K玫瑰金','Juste un Clou手镯\n白18K金,钻石','Juste un Clou手镯\n18K玫瑰金,钻石',
+						'Juste un Clou手镯,18K黄金','Juste un Clou戒指\n18K玫瑰金','Juste un Clou手镯\n白18K金,钻石','Juste un Clou手镯\n18K玫瑰金,钻石',
 						'Juste un Clou项链\n18K玫瑰金,钻石','Juste un Clou项链\n白18K金,钻石','Juste un Clou项链\n18K黄金,钻石'];
 		//store ring info in Array, update after transitionEnd
 		var infoArr = ['表达自信不羁的独立精神，彰显个人独特自我。问世于上世纪七十年代纽约的Juste un Clou，体现张扬摩登，特立独行的纽约设计风格，一经推出就广受追捧。作品线条鲜明，将现代气息与大胆创意融为一体。'];
-
+		//store links in array
+		var linkArr = ['juste-un-clou戒指/b4210800%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4211000%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4211800%20juste%20un%20clou%20ring.html',
+					   'juste-un-clou戒指/b4210900%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4094800%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4092500%20juste%20un%20clou%20ring.html',
+					   'juste-un-clou手镯/b6037817%20juste%20un%20clou%20bracelet.html','juste-un-clou手镯/b6037917%20juste%20un%20clou%20bracelet.html','juste-un-clou手镯/b6039017%20juste%20un%20clou%20bracelet.html',
+					   'juste-un-clou项链/b3047000%20juste%20un%20clou%20necklace.html','juste-un-clou项链/b3046900%20juste%20un%20clou%20necklace.html','juste-un-clou项链/b7224511%20juste%20un%20clou%20necklace.html'];
 		var updateInfo = function(){
 			var index = $(".ring-container .swiper-slide-active").attr('data-ring');
+			
 			$(".ring-brief").text(briefArr[index]);
 			$(".ring-info").text(infoArr[0]);
+
+			$(".shopBtn").attr('href','http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97/'+linkArr[index]);
 		}
 
 		var ringSwiper = new Swiper('.ring-container',{watchSlidesProgress : true,shortSwipes : true,prevButton:'.shop-button-prev',
@@ -187,9 +195,6 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 		$('.ring-container .swiper-slide').each(function(index,item){
 			$(this).find('img').attr('src','img/ring/'+(parseInt(this.getAttribute('data-ring'))+1)+'.png');
 		});
-
-		// $('.shop-container .shop-button-prev').find('img').attr('src','img/png/btn-prev.png');
-		// $('.shop-container .shop-button-prev').find('img').attr('src','img/png/btn-next.png');
 		ringSwiper.slideTo(1);
 		updateInfo();
 	}
@@ -203,13 +208,27 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 			if($('.gallery-container').hasClass('dn')){
 				//if the swiper is invisible
 				gallerySwiper.slideTo(target,50,false);
-				$('.galleryContent').addClass('zoomOut');
+				$('.galleryContent').removeClass('zoomIn').addClass('zoomOut');
 				$('.gallery-container').addClass('zoomIn').removeClass('dn');
 				$('.galleryContainer .swiper-btn').removeClass('dn');
+				$('.galleryBtn').removeClass('dn');
+				window.setTimeout(function(){
+					$('.gallery-container').removeClass('zoomIn');
+				},1000);
 			}else{
-				return;
+				$('.gallery-container').addClass('zoomOut');
+				$('.galleryContent').addClass('zoomIn').removeClass('zoomOut');
+				$('.galleryContainer .swiper-btn').addClass('dn');
+				$('.galleryBtn').addClass('dn');
+				window.setTimeout(function(){
+					$('.gallery-container').removeClass('zoomOut').addClass('dn');
+				},1000);
+				
 			}
 		}
+
+		$('.galleryBtn').bind('click',function(){return toggleSwiper()});
+
 		$('.galleryContent .galleryImg').each(function(index,item){
 			$(this).css('background-image','url(img/jpg/luhan-'+(parseInt(this.getAttribute('data-target'))+1)+'.jpg)');
 			$(this).bind('click',function(){

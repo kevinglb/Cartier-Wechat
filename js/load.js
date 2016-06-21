@@ -53,13 +53,13 @@ var loadcompleted = false;
 	//    }
  //    },20);
 	
-	ctx.beginPath();
-	ctx.strokeStyle="#fff"; 
-	ctx.lineWidth = 2; 
-	ctx.moveTo(circle.width*0.78 , circle.height*0.19);//戒指横线
-	ctx.lineTo(circle.width*0.87 , circle.height*0.1);
-	ctx.stroke();//横线
-	ctx.closePath();
+	// ctx.beginPath();
+	// ctx.strokeStyle="#fff"; 
+	// ctx.lineWidth = 2; 
+	// ctx.moveTo(circle.width*0.78 , circle.height*0.19);//戒指横线
+	// ctx.lineTo(circle.width*0.87 , circle.height*0.1);
+	// ctx.stroke();//横线
+	// ctx.closePath();
 	loadImg();
     //'img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
 	function loadImg(){
@@ -69,9 +69,6 @@ var loadcompleted = false;
 		for(var i=0;i<imgArr.length;i++){
             var image = new Image();
             image.src = imgArr[i];
-            // image.onload = function(){
-            //     num++;
-            // };
         }
         b = window.setInterval(function(){
             if(loadcompleted){
@@ -83,7 +80,6 @@ var loadcompleted = false;
                 updateLoader(num,len);
             }
         },50);
-
         if(!spinner.getAttribute('src')){
             spinner.setAttribute('src', 'img/png/load-spinner.png');
         }
@@ -104,7 +100,9 @@ var loadcompleted = false;
             var r = $circle.getAttribute('r');
             var c = Math.PI * (r * 2);
             var pct = ((100 - index)/100) * c;
-            $circle.style.strokeDashoffset = pct;
+            if(index <= 98){
+                $circle.style.strokeDashoffset = pct;
+            }
 		  }else{
 			//clear the interval
 			// window.clearInterval(b);

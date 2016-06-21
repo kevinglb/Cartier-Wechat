@@ -117,6 +117,7 @@ a{color: #fff;text-decoration: none;}
     height: 100%;
     top:0;
     left: 0;
+    opacity: 0.9;
 }
 /*pano part*/
 .mainWrap .headBar{position: absolute;top: 0;left: 0;z-index: 2}
@@ -316,6 +317,23 @@ a{color: #fff;text-decoration: none;}
     opacity: 1;
 }
 
+.r-progress-bar{
+    position: absolute;
+      top: 0;left: 0;
+}
+.r-progress-bar > circle {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 250ms linear;
+    -webkit-transition: stroke-dashoffset 250ms linear;
+    -moz-transition: stroke-dashoffset 250ms linear;
+    stroke: #fff;
+    stroke-width: 3px;
+}
+.r-progress-bar > .bar {
+  stroke: #fff;
+  transform:rotate(-45deg);
+  transform-origin:50% 50%;
+}
 .numContainer{
     width: 100%;
     height: 100%;

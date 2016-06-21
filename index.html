@@ -24,23 +24,6 @@
             doc.addEventListener('DOMContentLoaded', recalc, false);
       })(document, window);
     </script>
-    <style>
-    .r-progress-bar{
-      position: absolute;
-      top: 0;left: 0;
-    }
-    .r-progress-bar > circle {
-  stroke-dashoffset: 0;
-  transition: stroke-dashoffset 1s ease;
-  stroke: #2B2B2B;
-  stroke-width: 3px;
-}
-.r-progress-bar > .bar {
-  stroke: #fff;
-  transform:rotate(-45deg);
-  transform-origin:50% 50%;
-}
-    </style>
 </head>
 <body>
   <img src="img/jpg/tag-img.jpg" class="tag-img"/>
@@ -59,7 +42,7 @@
       </div>
       <canvas id="loadCircle" width="100" height="100" style="display:none"></canvas>
       <svg class="r-progress-bar" width="100" height="100" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <circle class="bar" r="48" cx="50" cy="50" fill="transparent" stroke-dasharray="301.59" stroke-dashoffset="295.561" style="stroke-dashoffset:301.593"></circle>
+        <circle class="bar" r="48" cx="50" cy="50" fill="transparent" stroke-dasharray="301.59" stroke-dashoffset="295.561" style="stroke-dashoffset:301.593" stroke="#fff"></circle>
         <line x1="80" x2="89" y1="21" y2="12" stroke-width="3" fill="transparent" stroke="#fff" ></line>
       </svg>
       <img src="" class="loadSpinner dn"/>
@@ -290,35 +273,6 @@
       krpano.get("hotspot['hs77']").scale=count;
       krpano.get("hotspot['hs77']").alpha=count1;
   }
-</script>
-<script>
-
-
-$btn.addEventListener('click', function(evt) {
-  // var val = incrementProgress(
-  //   $wrapper.getAttribute('data-percentage')
-  // );
-  var r = $circle.getAttribute('r');
-  var c = Math.PI * (r * 2);
-  var pct = ((100 - val)/100) * c;
-  $circle.style.strokeDashoffset = pct;
-  
-  $text.innerText = val*1.1 + '%';
-  //$wrapper.setAttribute('data-percentage', val);
-});
-
-function incrementProgress(val) {
-  val = parseInt(val, 10);
-  var min = 2;
-  var max = 25;
-  var incremented;
-  
-  return (incremented = val + random(min, max)) >= 100? 0: incremented;
-}
-
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
 </script>
 </body>
 </html>
