@@ -100,9 +100,9 @@ var loadcompleted = false;
             var r = $circle.getAttribute('r');
             var c = Math.PI * (r * 2);
             var pct = ((100 - index)/100) * c;
-            if(index <= 93){
-                $circle.style.strokeDashoffset = pct;
-            }
+            
+            $circle.style.strokeDashoffset = pct*1.04;
+            
 		  }else{
 			//clear the interval
 			// window.clearInterval(b);
