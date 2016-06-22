@@ -7,15 +7,8 @@
     <!-- Link CSS -->
     <link rel="shortcut icon" type="image/x-icon" href="img/jpg/tag-img.jpg" media="screen">
     <link rel="preload" as="image" href="img/jpg/index-bg.jpg" media="(max-width: 600px)" >
-    <link rel="preload" as="image" href="img/jpg/360_b.jpg" media="(max-width: 600px)" >
-    <link rel="preload" as="image" href="img/jpg/360_f.jpg" media="(max-width: 600px)" >
-    <link rel="preload" as="image" href="img/jpg/360_u.jpg" media="(max-width: 600px)" >
-    <link rel="preload" as="image" href="img/jpg/360_r.jpg" media="(max-width: 600px)" >
-    <link rel="preload" as="image" href="img/jpg/360_l.jpg" media="(max-width: 600px)" >
-    <link rel="preload" as="image" href="img/jpg/360_d.jpg" media="(max-width: 600px)" >
-    <!-- <link rel="preload-font" href="css/Gotham-Light.otf" media="(max-width: 600px)" > -->
+    <link rel="preload" as="image" href="img/png/glass-bg.png" media="(max-width: 600px)" >
     <link rel="stylesheet" href="css/swiper.css"/>
-    <!-- <link rel="stylesheet" href="css/animate.min.css"/> -->
     <link rel="stylesheet" href="css/style.css"/>
     <!-- rem js based on clientWidth-->
     <script type="text/javascript">
@@ -184,49 +177,24 @@
   <script sync src="js/TweenMax.min.js"></script>
   <script sync src="js/s.min.js"></script>
   <script sync src="js/embedpano.js"></script>
-
-  <script sync type="text/javascript" src="js/load.js"></script>  
-  <script sync type="text/javascript" src="js/jquery-1.11.3.js"></script>
-  <!-- <script type="text/javascript" src="js/clipPath.js"></script> -->
-
   <script type="text/javascript">
-  var settings = {
-          swf:"js/krpano.swf",
-          js: "js/krpano.js",
-          xml:"sphere.xml",
-          target:"pano",
-          html5: "only", //(document.domain ? "prefer" : "auto"),
-          passQueryParameters:true,
-          // onready:krpanoReady
-        };
-        embedpano(settings);</script>
-    <!-- Swiper JS -->
-    <script src="js/swiper.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/fastClick.js"></script>
-    <script type="text/javascript">
           //tracking GA code 
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
+      
     </script>
-    <script>
-    $(document).ready(function(){FastClick.attach(document.body);});
-      var krpano;
-      //var hostname=s.cookie.get("hostname");
-      $(function(){
-        // var settings = {
-        //   swf:"js/krpano.swf",
-        //   js: "js/krpano.js",
-        //   xml:"sphere.xml",
-        //   target:"pano",
-        //   html5: "only", //(document.domain ? "prefer" : "auto"),
-        //   passQueryParameters:true,
-        //   // onready:krpanoReady
-        // };
-        // embedpano(settings);
-      });
-
-
+  <script sync type="text/javascript" src="js/load.js"></script>  
+  <script sync type="text/javascript" src="js/jquery-1.11.3.js"></script>
+  <script type="text/javascript">
+    var settings = {swf:"js/krpano.swf",js: "js/krpano.js",xml:"sphere.xml",target:"pano",html5: "only",passQueryParameters:true,};
+        embedpano(settings);
+  </script>
+  <!-- Swiper JS -->
+  <script src="js/swiper.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/fastClick.js"></script>
+    
+  <script>
+    $(document).ready(function(){FastClick.attach(document.body);ga('create', 'UA-25338682-37', 'auto');ga('send', 'pageview');});
     function loadcomplete(){
       loadcompleted = true;
       //show menubtn and musicbtn
@@ -250,10 +218,7 @@
       // krpano.get("hotspot['hs5']").visible='true';
       krpano.get("hotspot['hs6']").visible='true';
       krpano.get("hotspot['hs7']").visible='true';
-      console.log('load complete');
       window.setInterval(animatepoint,125);
-      ga('create', 'UA-25338682-37', 'auto');
-      ga('send', 'pageview');
     }
 
     var count = 0.5;
@@ -268,7 +233,6 @@
         count=0.5;
         count1=0.5;
       }
-      
       krpano.get("hotspot['hs11']").scale=count;
       krpano.get("hotspot['hs11']").alpha=count1;
       krpano.get("hotspot['hs22']").scale=count;

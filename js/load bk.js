@@ -18,7 +18,7 @@ var globalImgUrl = "http://images.nurunci.com/";
     //variables for glass effect
     const TWO_PI = Math.PI * 2;
     var images = [], imageIndex = 0;
-    var imageGlass;
+    var image;
     var vertices = [], indices = [], fragments = [], fragment;
     var container = document.getElementById('container');
     var imageWidth = window.innerWidth, imageHeight = window.innerHeight;
@@ -27,20 +27,14 @@ var globalImgUrl = "http://images.nurunci.com/";
 	loadImg();
     //'img/jpg/360_f.jpg','img/jpg/360_l.jpg','img/jpg/360_b.jpg','img/jpg/360_d.jpg','img/jpg/360_u.jpg','img/jpg/360_r.jpg',
 	function loadImg(){
-		var imgArr = ['img/png/load-spinner.png','img/png/load-logo.png','img/png/head-logo.png','img/png/btn-menu.png',
+		var imgArr = ['img/png/load-spinner.png','img/png/load-logo.png','img/png/glass-bg.png','img/png/head-logo.png','img/png/btn-menu.png',
                       'img/png/btn-music.png','img/png/btn-music-mute.png','img/png/btn-close.png'];
 		var num = 1,
-            len = imgArr.length,
-            url = 'img/png/glass-bg.png';
-            
-        imageGlass = new Image();
-        imageGlass.src = url;
-        imageGlass.onload = function(){ 
-            imagesLoaded();
-        };
+            len = imgArr.length;
 		for(var i=0;i<len;i++){
             var img = new Image();
             img.src = imgArr[i];
+
         }
 
         b = window.setInterval(function(){
@@ -96,27 +90,25 @@ var globalImgUrl = "http://images.nurunci.com/";
         }
         return bg.replace(/url\(['"]?(.*?)['"]?\)/i, "$1");
     }
-	// window.onload = function(){
- //    //TweenMax.set(container, { perspective: 500 });
- //    	var url = 'img/png/glass-bg.png',
- //    	 	image, loaded = 0;
- //        imageGlass = new Image();
- //        imageGlass.src = url;
- //    	//images[0] = image = new Image();
- //    	imageGlass.onload = function(){	
- //          // if (++loaded === 1) {
- //            imagesLoaded();
- //            //for (var i = 1; i < 4; i++) {
- //                // if (window.CP.shouldStopExecution(1)) {
- //                //     break;
- //                // }
- //               // images[i] = image = new Image();
- //                //image.src = urls[i];
- //            //}
- //        //}		
- //    	};
- //    	//image.src = urls[0];
-	// };
+	window.onload = function(){
+    //TweenMax.set(container, { perspective: 500 });
+    	var urls = ['img/png/glass-bg.png'],
+    	 	image, loaded = 0;
+    	images[0] = image = new Image();
+    	image.onload = function(){	
+           if (++loaded === 1) {
+            imagesLoaded();
+            for (var i = 1; i < 4; i++) {
+                // if (window.CP.shouldStopExecution(1)) {
+                //     break;
+                // }
+                images[i] = image = new Image();
+                image.src = urls[i];
+            }
+        }		
+    	};
+    	image.src = urls[0];
+	};
 
 	function imagesLoaded() {
     	placeImage(false);
@@ -124,17 +116,18 @@ var globalImgUrl = "http://images.nurunci.com/";
 	}
 	//place the image
 	function placeImage(transitionIn) {
-    	// image = images[imageIndex];
-    	// if (++imageIndex === images.length)
-     //        imageIndex = 0;
-        imageGlass.style.opacity = 0;
-        container.appendChild(imageGlass);
+    	image = images[imageIndex];
+    	if (++imageIndex === images.length)
+            imageIndex = 0;
+    	
+        image.style.opacity = 0;
+        container.appendChild(image);
     }
     function imageClickHandler(event) {
     	var box = loadWrap.getBoundingClientRect(), top = box.top, left = box.left;
     	clickPosition[0] = event.clientX - left;
     	clickPosition[1] = event.clientY - top;
-        imageGlass.style.opacity = 1;
+        image.style.opacity = 1;
     	//triangulate();
 
         window.setTimeout(function(){
@@ -238,7 +231,7 @@ var globalImgUrl = "http://images.nurunci.com/";
             // fragments.push(fragment);
         }
         //container.appendChild(fragments);
-        container.removeChild(imageGlass);
+        container.removeChild(image);
         // if(overlay.classList.contains('dn')){
         //     overlay.classList.remove('dn');
         // }
@@ -322,7 +315,7 @@ var globalImgUrl = "http://images.nurunci.com/";
         	this.ctx.lineTo(this.v2[0], this.v2[1]);
         	this.ctx.closePath();
         	this.ctx.clip();
-        	this.ctx.drawImage(imageGlass, 0, 0);
+        	this.ctx.drawImage(image, 0, 0);
     	}
 	};
 

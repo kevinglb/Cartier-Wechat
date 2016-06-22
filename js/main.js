@@ -73,12 +73,15 @@
 	}
 
 	function showWrap(target,data,name){
+		//var $_musicBtn = $('.mainWrap .headBar .musicBtn');
 		switch(target){
 			case 'video':
 				if($('.menu').hasClass('visible')){
 					toggleMenu();
+
 				}
 				initVideoWrap(data);
+				
 				break;
 			case 'gallery':
 				if($('.menu').hasClass('visible')){
@@ -122,6 +125,12 @@
     }
 
 	function toggleWrap(target){
+		//var $_musicBtn = $('.mainWrap .headBar .musicBtn');
+
+		// if(target === 'video' && $("."+target+"Wrap").hasClass('visible')){
+		// 	toggleMusic($_musicBtn);
+		// }
+
 		$("."+target+"Wrap").toggleClass('visible');
 		
 		if(target === 'gallery' && $('.gallery-container').hasClass('zoomIn')){
@@ -177,13 +186,12 @@
 		//store ring info in Array, update after transitionEnd
 		var infoArr = ['表达自信不羁的独立精神，彰显个人独特自我。问世于上世纪七十年代纽约的Juste un Clou，体现张扬摩登，特立独行的纽约设计风格，一经推出就广受追捧。作品线条鲜明，将现代气息与大胆创意融为一体。'];
 		//store links in array
-		var linkArr = ['juste-un-clou戒指/b4210800%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4211000%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4211800%20juste%20un%20clou%20ring.html',
+		var linkArr = ['juste-un-clou戒指/b4210800%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4211100%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4211800%20juste%20un%20clou%20ring.html',
 					   'juste-un-clou戒指/b4210900%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4094800%20juste%20un%20clou%20ring.html','juste-un-clou戒指/b4092500%20juste%20un%20clou%20ring.html',
 					   'juste-un-clou手镯/b6037817%20juste%20un%20clou%20bracelet.html','juste-un-clou手镯/b6037917%20juste%20un%20clou%20bracelet.html','juste-un-clou手镯/b6039017%20juste%20un%20clou%20bracelet.html',
 					   'juste-un-clou项链/b3047000%20juste%20un%20clou%20necklace.html','juste-un-clou项链/b3046900%20juste%20un%20clou%20necklace.html','juste-un-clou项链/b7224511%20juste%20un%20clou%20necklace.html'];
 		var updateInfo = function(){
 			var index = $(".ring-container .swiper-slide-active").attr('data-ring');
-			
 			$(".ring-brief").text(briefArr[index]);
 			$(".ring-info").text(infoArr[0]);
 
@@ -195,14 +203,30 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 		$('.ring-container .swiper-slide').each(function(index,item){
 			$(this).find('img').attr('src','img/ring/'+(parseInt(this.getAttribute('data-ring'))+1)+'.png');
 		});
+
+		$('.shop-button-prev').bind('click',function(){return validTracking('Online-Purchase')});
+		$('.shop-button-next').bind('click',function(){return validTracking('Online-Purchase')});
+		$('.shopBtn').bind('click',function(){return validTracking('Online-Purchase')});
+		
 		ringSwiper.slideTo(1);
 		updateInfo();
 	}
 
 	function initGallerySwiper(){
-		var gallerySwiper = new Swiper('.gallery-container',{watchSlidesProgress : true,prevButton:'.swiper-button-prev',
-			nextButton:'.swiper-button-next'});
+		
+		var updateTransition = function(){
+			var index = $('.gallery-container .swiper-slide-active').attr('data-img');
+			var x = parseInt($('.swiper-wrapper').css('transform').split(',')[4])- 1;
+			if(index === 2 || index ===5){
+				$('.swiper-wrapper').css('transform','translate3d('+x+'px 0px 0px)');
+			}
+			
+		}
 
+		var gallerySwiper = new Swiper('.gallery-container',{watchSlidesProgress : true,prevButton:'.swiper-button-prev',
+			nextButton:'.swiper-button-next',onTransitionEnd:function(swiper){updateTransition()}});
+
+		
 
 		var toggleSwiper = function(target){
 			if($('.gallery-container').hasClass('dn')){
@@ -225,6 +249,7 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 				},1000);
 				
 			}
+			updateTransition();
 		}
 
 		$('.galleryBtn').bind('click',function(){return toggleSwiper()});
@@ -246,24 +271,13 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 		$('.galleryContainer .swiper-btn').addClass('dn');	
 	}
 
-	function hostPointClick(target,data,hostname){
+	function hostPointClick(target,data,eventName){
 		//_s.cookie.set("hostname",hostname);
-		switch(target){
-			case 'video':
-				initVideoWrap(data);
-				break;
-			case 'gallery':
-				toggleWrap(target);
-				break;
-			case 'shop':
-				toggleWrap(target);
-				break;
-			default:
-				break;
-		}
-		return;
+		showWrap(target,data);
+		validTracking(eventName);
 	}
 
 	function validTracking(eventName){
-		ga('360',eventName);
+		ga('send','360',eventName);
+		//console.log('tracking code');
 	}

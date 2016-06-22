@@ -58,6 +58,7 @@ a{color: #fff;text-decoration: none;}
     -webkit-align-items: center;
     align-items: center;    
 }
+.swiper-slide img{width: 0;margin: 0 auto;}
 .mainWrap{
     position: relative;
     width: 100%;
@@ -73,6 +74,7 @@ a{color: #fff;text-decoration: none;}
     left: 0;
     margin: 0 auto;
 }
+
 .loadWrap{
     /*background-color: transparent;*/
     background-image: url('../img/jpg/index-bg.jpg');
@@ -96,6 +98,7 @@ a{color: #fff;text-decoration: none;}
     margin: 0 auto;
     position: relative;
 }
+.galleryContainer{width: 80%;}
 .videoContainer .titleImg, .galleryContainer .titleImg, .shopContainer .titleImg{
     width: 100%;
 }
@@ -188,7 +191,7 @@ a{color: #fff;text-decoration: none;}
 .menu a:last-child{
     padding: 0;
     position: absolute;
-    bottom: 0.3rem;
+    bottom: 0.2rem;
     display: block;
     left: 0;
     right: 0;
@@ -243,10 +246,10 @@ a{color: #fff;text-decoration: none;}
 .galleryContainer .swiper-button-next img{right: 5px}
 
 .galleryBtn{position: absolute;
-    top: 9.3rem;
+    top: 9.2rem;
     left: 50%;
-    width: 0.8rem;
-    margin-left: -0.4rem;}
+    width: 0.6rem;
+    margin-left: -0.3rem;}
 .galleryBtn img{width: 100%;}
 /* gallertWrap part */
 /* shopWrap part */
