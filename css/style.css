@@ -5,11 +5,8 @@
     .mainWrap overlay 1
     other Wraps 3*/
 /*style*/
-@font-face {
-    font-family: gotham;
-    src: url('Gotham-Light.otf') format('opentype');
-}
- html,body{
+@font-face {font-family: 'gotham-mid';src: url('Gotham-Medium.otf') format('opentype');}
+html,body{
     width: 100%;
     height: 100%;
     background: #eee;
@@ -31,7 +28,7 @@ img{margin: 0 auto}
 body{position: relative;}
 .clearfix{clear: both;}
 /*fonts*/
-.en{font-family: gotham}
+.en{font-family: 'gotham-mid'}
 a{color: #fff;text-decoration: none;}
 .dn{display: none}
 .swiper-container {
@@ -56,42 +53,57 @@ a{color: #fff;text-decoration: none;}
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    align-items: center;    
+    align-items: center;   
+    padding: 0 1px; 
 }
-.swiper-slide img{width: 0;margin: 0 auto;}
+.swiper-slide img{width: 100%}
 .mainWrap{
     position: relative;
     width: 100%;
     height: 100%;
-    /*background-image: url('../img/jpg/index-bg.jpg');*/
     background-size: cover
 }
-.loadWrap, .videoWrap, .galleryWrap, .shopWrap{
+.loadWrap, .videoWrap, .galleryWrap, .shopWrap, .commingWrap{
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     margin: 0 auto;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
 }
-
 .loadWrap{
-    /*background-color: transparent;*/
     background-image: url('../img/jpg/index-bg.jpg');
     background-size: cover;
     z-index: 9;
 }
-.videoWrap, .galleryWrap, .shopWrap{
+.loadWrap .headBar{
+    z-index: 9;
+    position: absolute;
+}
+.videoWrap, .galleryWrap, .shopWrap, .commingWrap{
     transition: all 350ms ease-in-out;
     transform: translate3d(0,100%,0);
+}
+.videoWrap:after, .galleryWrap:after, .shopWrap:after{
+    display: block;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     background-image: url('../img/jpg/video-bg.jpg'); 
     background-size: cover;
+    z-index: -1;
+    opacity: 0.95;
 }
-.videoWrap.visible, .galleryWrap.visible, .shopWrap.visible{
+
+.videoWrap.visible, .galleryWrap.visible, .shopWrap.visible, .commingWrap.visible{
     transform: translate3d(0,0,0);
     z-index: 3;
 }
-
 .videoContainer, .galleryContainer, .shopContainer{
     padding-top: 0.4rem;
     width: 82%;
@@ -108,15 +120,14 @@ a{color: #fff;text-decoration: none;}
     text-align: center;
     color: #fff;
 }
+.videoContainer .content.loose-text{letter-spacing: 1px}
 .videoContainer iframe{
     width: 100%;
     height: auto;
     margin: 0.2rem auto;
-    /*min-height: 3.8rem;*/
     background-color: #000;
 
 }
-
 /*mainWrap part*/
 #pano{
     position: absolute;
@@ -141,16 +152,7 @@ a{color: #fff;text-decoration: none;}
     margin-top: -24px;
 }
 .navi.fadeOut, .overlay.fadeOut{animation: blur 1600ms normal forwards linear;}
-
-@keyframes blur {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.1;
-  }
-}
-
+@keyframes blur {0% {opacity: 1;} 100% {opacity: 0.1;}}
 /* menu part*/
 .menu{
     position: absolute;
@@ -159,10 +161,11 @@ a{color: #fff;text-decoration: none;}
     left: 0;
     width: 50%;
     height: auto;
-    overflow: scroll;
     background-size: cover;
     transform: translate3d(-100%,0,0);
     transition: all 250ms ease-in-out;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
 }
 .menu.visible{
     transform: translate3d(0,0,0);
@@ -198,7 +201,6 @@ a{color: #fff;text-decoration: none;}
     text-align: center;
 }
 /*menu part*/
-
 .swiper-btn{outline: none;}
 /* gallertWrap part */
 .galleryImg{
@@ -206,7 +208,7 @@ a{color: #fff;text-decoration: none;}
     float: left;
     width: 47.5%;
     height: 2.6rem;
-    background-color: #fff;
+    background-color: transparent;
     margin-top: 0.3rem;
     background-size: cover;
     background-repeat: no-repeat;
@@ -244,7 +246,6 @@ a{color: #fff;text-decoration: none;}
 }
 .galleryContainer .swiper-button-prev img{left: 5px}
 .galleryContainer .swiper-button-next img{right: 5px}
-
 .galleryBtn{position: absolute;
     top: 9.2rem;
     left: 50%;
@@ -285,6 +286,7 @@ a{color: #fff;text-decoration: none;}
 .ring-info{
     min-height: 2.5rem;
     margin: 0.5rem auto;
+    text-align: center;
 }
 .ring-container{
     height: 3rem;
@@ -330,16 +332,47 @@ a{color: #fff;text-decoration: none;}
     -webkit-transition: all 500ms linear;
     -moz-transition: all 500ms linear;
 }
+.loadContainer .tip{
+    position: absolute;
+    font-size: 15px;
+    left: 50%;
+    margin-left: -30px;
+    bottom: 15px;
+    display: none;
+    font-family: 'gotham-mid';
+    font-weight: bold;
+}
+
+.loadContainer .tip.blinking{
+    display: block;
+    animation: blink 2400ms ease-in-out alternate infinite;
+    -webkit-animation:blink 2400ms ease-in-out alternate infinite;
+    -moz-animation:blink 2400ms ease-in-out alternate infinite;
+}
+@keyframes blink{
+    from {opacity: 0.33}
+    50%{opacity: 1}
+    100% {opacity: 0.33}
+}
+@-webkit-keyframes blink{
+  from {opacity: 0.33}
+    50%{opacity: 1}
+    100% {opacity: 0.33}
+}
+@-moz-keyframes blink{
+  from {opacity: 0.33}
+    50%{opacity: 1}
+    100% {opacity: 0.33}
+}
 #loadCircle{
     position: absolute;
     top:0;
     left: 0;
     opacity: 1;
 }
-
 .r-progress-bar{
     position: absolute;
-      top: 0;left: 0;
+    top: 0;left: 0;
 }
 .r-progress-bar > circle {
     stroke-dashoffset: 0;
@@ -384,11 +417,10 @@ a{color: #fff;text-decoration: none;}
     display: none;
 }
 .loadContainer .loadLogo{
-    width: 72%;
+    width: 70%;
     opacity: 0;
 }
 .loadSpinner{
-
     width: 100%;
 }
 .loadContainer.expand{
@@ -425,19 +457,6 @@ a{color: #fff;text-decoration: none;}
   0%   { transform: rotate(0deg) }
   100% { transform: rotate(360deg) }
 }
-
-/*@keyframes rotating {
-    from {-moz-transform: rotate(0deg);
-          -webkit-transform: rotate(0deg);
-          -o-transform: rotate(0deg);
-          -ms-transform: rotate(0deg);
-          transform: rotate(0deg);}
-    to {-moz-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);}
-}*/
 #container {
     position: absolute;
     width: 100%;
@@ -446,7 +465,7 @@ a{color: #fff;text-decoration: none;}
     top: 0;
     bottom: 0;
     margin: auto;
-    background: rgba(10,10,10,0.2);
+    background: rgba(10,10,10,0.45);
 }
 #container img{
     position: absolute;
@@ -464,7 +483,7 @@ a{color: #fff;text-decoration: none;}
 /*headBar part*/
 .headBar{
     width: 100%;
-    background:rgba(10,10,10,0.2);
+    /*background:rgba(10,10,10,0.2);*/
     min-height: 1.5rem;
 }
 .headBar > img{
@@ -493,17 +512,13 @@ a{color: #fff;text-decoration: none;}
     display: block;
 }
 /*headBar part*/
-
-
 /*animation*/
-
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
 @-webkit-keyframes zoomIn {
   from {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}
   50% {opacity: 1;}
@@ -512,48 +527,22 @@ a{color: #fff;text-decoration: none;}
   from {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}
   50% {opacity: 1;}
 }
-.zoomIn {
-  -webkit-animation-name: zoomIn;
-  animation-name: zoomIn;
-}
+.zoomIn {-webkit-animation-name: zoomIn;animation-name: zoomIn;}
 @-webkit-keyframes zoomOut {
   from {opacity: 1;}
   50% {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}
   to {opacity: 0;}
 }
-
 @keyframes zoomOut {
   from {opacity: 1;}
   50% {opacity: 0;-webkit-transform: scale3d(.3, .3, .3);transform: scale3d(.3, .3, .3);}
   to {opacity: 0;}
 }
-.zoomOut {
-  -webkit-animation-name: zoomOut;
-  animation-name: zoomOut;
+.zoomOut {-webkit-animation-name: zoomOut;animation-name: zoomOut;}
+
+@media only screen and (device-width: 414px) {
+    .galleryContainer{width: 332px}
+    .swiper-slide{width: 332px}
 }
 
-
-/*clipPath css*/
-.clip[style] {
-    opacity: 1;
-}
-.active .clip:not([style]) {
-    opacity: 1;
-    animation: fadeOut .1s .4s both;
-}
-.active .clip[style] {
-    will-change: transform;
-    animation: noTransform .5s both;
-}
-
-@keyframes noTransform {
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0) rotate(0);
-    }
-}
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
+.commingWrap{background-image: url('../img/jpg/comming-bg.jpg');background-size: cover;background-position-y:-1.25rem }

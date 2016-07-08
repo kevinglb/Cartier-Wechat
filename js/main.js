@@ -1,8 +1,8 @@
 
-	var videoData = {'film':{'titleImg': 'img/png/title-film.png','text':'卡地亚诚邀您欣赏我们的全新品牌宣传大片，一起沉浸在Juste Un Clou的世界','src':'http://v.qq.com/iframe/player.html?vid=q0307i6fbn9&amp;'},
-					 'bonus':{'titleImg': 'img/png/title-bonus.png','text':'揭开幕后制作过程，探索Juste un Clou的世界。','src':'http://v.qq.com/iframe/player.html?vid=j03074zysw0&amp;'},
-					 'luhan':{'titleImg': 'img/png/title-luhan.png','text':'男演员、歌手鹿晗年纪轻轻就展现多才多艺的才华，他以唱歌跳舞来表现自我，对于表演的热情从来不曾消减。他举手投足之间展现出自然不扭捏的自信，他敢于追求自己的梦想，从不停下他的脚步。','src':'http://v.qq.com/iframe/player.html?vid=p03071r5vbp&amp;'},
-					 'lisa':{'titleImg': 'img/png/title-lisa.png','text':'时尚导演Lisa Paclet，她擅长完美的结合舞蹈、时尚、艺术在她的影像创作之中，她浪漫的性格与精准的肢体动作指导使得这次影片达到一个尽善尽美的视觉飨宴。','src':'http://v.qq.com/iframe/player.html?vid=s0307k3wmkb&amp;'},
+	var videoData = {'film':{'titleImg': 'img/png/title-film.png','text':'卡地亚诚邀您欣赏我们的全新品牌宣传大片,一起沉浸在Juste un Clou的世界','src':'http://player.youku.com/embed/XMTYzMjMzNDY5Mg=='},
+					 'bonus':{'titleImg': 'img/png/title-bonus.png','text':'揭开幕后制作过程，探索Juste un Clou的世界。','src':'http://player.youku.com/embed/XMTYzNTc5MDkyOA=='},
+					 'luhan':{'titleImg': 'img/png/title-luhan.png','text':'男歌手、演员鹿晗年纪轻轻就展现多才多艺的才华，他以唱歌跳舞来表现自我，对于表演的热情从来不曾消减。他举手投足之间展现出自然不扭捏的自信，他敢于追求自己的梦想，从不停下他的脚步。','src':'http://player.youku.com/embed/XMTYzNTg2NDM1Ng=='},
+					 'lisa':{'titleImg': 'img/png/title-lisa.png','text':'时尚导演Lisa Paclet，她擅长完美的结合舞蹈、时尚、艺术在她的影像创作之中，她浪漫的性格与精准的肢体动作指导使得这次影片达到一个尽善尽美的视觉飨宴。','src':'http://player.youku.com/embed/XMTYzNTg2NTgyMA=='},
 					 'liqi':{'titleImg': 'img/png/title-liqi.png','text':'时尚摄影师李奇，他在黑白摄影中博主哦永垂不朽的经典。通过他的镜头，每一位大明星总能自在的展现本真的自我。李奇不造作，坦荡荡的艺术家气息完全符合Juste un Clou精神。','src':''}};
 
 	//initVideoWrap, initShopWrap and initGalleryWrap should run after load.js has completed
@@ -61,9 +61,10 @@
 		 	validTracking('Menu-Music');
 		});
 		$_closeBtn.bind('click',function(){
-
-			$('.videoContainer .videoFrame').attr('src','');
-		    toggleWrap(this.getAttribute('data-target'));
+			toggleWrap(this.getAttribute('data-target'));
+			var $iframe = $('.videoContainer .videoFrame');
+			$('.videoContainer .videoFrame').attr('src',$('.videoContainer .videoFrame').attr('src'));
+			//$('.videoContainer').remove($iframe);
 		});
 	}
 
@@ -80,8 +81,11 @@
 					toggleMenu();
 
 				}
-				initVideoWrap(data);
-				
+				// if(data === 'film' || data === "bonus"){
+				// 	initVideoWrap(data);
+				// }else{
+					initVideoWrap(data);
+				//}
 				break;
 			case 'gallery':
 				if($('.menu').hasClass('visible')){
@@ -91,6 +95,7 @@
 					initGalleryWrap(data);
 				}
 				toggleWrap(target);
+				//toggleWrap('comming');
 				break;
 			case 'shop':
 				if($('.menu').hasClass('visible')){
@@ -153,10 +158,30 @@
  			$('.headBar .musicBtn').find('img').attr('src','img/png/btn-music-mute.png');
  			audio.pause();
  		}
+
+
+ 		if(data == 'bonus' || data == 'lisa'){
+ 			$('.videoContainer .content').removeClass('loose-text');
+ 		}else{
+ 			$('.videoContainer .content').addClass('loose-text');
+ 		}
+ 		//$('.videoContainer').append('<iframe class="videoFrame" style="z-index:1;" src="" allowfullscreen="" frameborder="0" ></iframe>');
 		$('.videoContainer .titleImg').attr('src',obj['titleImg']);
-		$('.videoContainer .content').text(obj['text']);
+		$('.videoContainer .content').text('');
+
+		if(data == 'film'){
+			$('.videoContainer .content').append(obj['text'].split(',')[0]);
+			$('.videoContainer .content').append(',');
+			$('.videoContainer .content').append('<br>');
+			$('.videoContainer .content').append(obj['text'].split(',')[1]);
+		}else{
+			$('.videoContainer .content').text(obj['text']);
+		}
+		
+
 		$('.videoContainer .videoFrame').css('height',h);
-		$('.videoContainer .videoFrame').attr('src','http://v.qq.com/iframe/player.html?vid=i03021lj2zr&amp;'+'width='+w+'&amp;height='+h+'&amp;auto=0');
+		//$('.videoContainer .videoFrame').attr('src','http://v.qq.com/iframe/player.html?vid=i03021lj2zr&amp;'+'width='+w+'&amp;height='+h+'&amp;auto=0');
+		$('.videoContainer .videoFrame').attr('src',obj['src']);
 		//http://v.qq.com/iframe/player.html?vid=i03021lj2zr&tiny=0&auto=0" allowfullscreen></iframe>
 		//$('.videoContainer .videoFrame').attr('src',obj['src']+'width='+w+'&amp;height='+h+'&amp;auto=0');
 		toggleWrap('video');
@@ -179,10 +204,10 @@
 
 	function initShopSwiper(data){
 		//store brief in array, update after transitionEnd
-		var briefArr = ['Juste un Clou戒指\n18K玫瑰金,钻石','Juste un Clou戒指\r\n白18K金,钻石',
-						'Juste un Clou戒指\r\n18K黄金,钻石','Juste un Clou戒指\n18K金,钻石','Juste un Clou戒指\n18K玫瑰金,钻石',
-						'Juste un Clou手镯,18K黄金','Juste un Clou戒指\n18K玫瑰金','Juste un Clou手镯\n白18K金,钻石','Juste un Clou手镯\n18K玫瑰金,钻石',
-						'Juste un Clou项链\n18K玫瑰金,钻石','Juste un Clou项链\n白18K金,钻石','Juste un Clou项链\n18K黄金,钻石'];
+		var briefArr = ['Juste un Clou戒指,18K玫瑰金,钻石','Juste un Clou戒指,18K白金,钻石',
+						'Juste un Clou戒指,18K黄金,钻石','Juste un Clou戒指,18K黄金,钻石','Juste un Clou戒指,18K玫瑰金,钻石',
+						'Juste un Clou戒指,18K黄金','Juste un Clou手镯,18K玫瑰金','Juste un Clou手镯,18K白金,钻石','Juste un Clou手镯,18K玫瑰金,钻石',
+						'Juste un Clou项链,18K玫瑰金,钻石','Juste un Clou项链,18K白金,钻石','Juste un Clou项链,18K黄金,钻石'];
 		//store ring info in Array, update after transitionEnd
 		var infoArr = ['表达自信不羁的独立精神，彰显个人独特自我。问世于上世纪七十年代纽约的Juste un Clou，体现张扬摩登，特立独行的纽约设计风格，一经推出就广受追捧。作品线条鲜明，将现代气息与大胆创意融为一体。'];
 		//store links in array
@@ -195,9 +220,11 @@
 			$(".ring-brief").text(briefArr[index]);
 			$(".ring-info").text(infoArr[0]);
 
-			$(".shopBtn").attr('href','http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97/'+linkArr[index]);
+			//$(".shopBtn").attr('href','http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97/'+linkArr[index]);
+			//$(".shopBtn").attr('href','http://www.cartier.cn/zh-cn/%E7%B3%BB%E5%88%97/%E7%8F%A0%E5%AE%9D%E7%B3%BB%E5%88%97/%E7%B3%BB%E5%88%97/juste-un-clou%E7%B3%BB%E5%88%97/'+linkArr[index]);
 		}
-
+		$(".shopBtn").attr('href','http://weboutique.cartier.cn/?utm_source=JUCH5&utm_medium=social&utm_campaign=Juste_un_Clou');
+		
 		var ringSwiper = new Swiper('.ring-container',{watchSlidesProgress : true,shortSwipes : true,prevButton:'.shop-button-prev',
 nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlides : true, onTransitionEnd:function(swiper){updateInfo()}});
 		$('.ring-container .swiper-slide').each(function(index,item){
@@ -278,6 +305,6 @@ nextButton:'.shop-button-next',slidesPerView : 3,slidesPerGroup : 1,centeredSlid
 	}
 
 	function validTracking(eventName){
-		ga('send','360',eventName);
+		ga('send','event','360',eventName);
 		//console.log('tracking code');
 	}

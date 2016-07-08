@@ -1,18 +1,14 @@
 <krpano tileserver="http://images.nurunci.com/">
-	<!-- <security cors="">
-		<allowdomain domain="http://images.nurunci.com/"/>
-	</security> -->
-	<control touchzoom="false" />
 	<plugin name="gyro" devices="html5" keep="true" url="js/gyro.js" enabled="true" sensor_mode="1" onavailable="" onunavailable=""/>
 	<plugin name="editor" url="http://p.surto.cn/test/cartiervr/1.19v4/plugins/editor.swf" keep="true" />
 	<image type="CUBE" prealign="">
-	    <cube url="img/jpg/33333_%s.jpg" />
+	    <cube url="%$tileserver%jpg/360_%s.jpg" />
 	</image>
 	<events onloadcomplete="loadcomplete"/>
 	<!-- <action name="hotclick">
 		 js(abc());
 	 </action>-->	 
-	<hotspot name="hs11" url="img/png/point.png" 
+	<hotspot name="hs11" url="%$tileserver%png/point.png" 
 	         ath="-1.122933" atv="21.26477" scale="0.5" width="50" height="50" 
 			 visible="false"
 	         depth="1000"
@@ -22,7 +18,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs22" url="img/png/point.png" 
+	<hotspot name="hs22" url="%$tileserver%png/point.png" 
 	         ath="-16.853303" atv="44.74209" scale="0.5" width="50" height="50" 
 			 visible="false"
 	         depth="1000"
@@ -32,7 +28,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs33" url="img/png/point.png" 
+	<hotspot name="hs33" url="%$tileserver%png/point.png" 
 	         ath="219.668303" atv="1.011678" scale="0.5" width="50" height="50" 
 			 visible="false"
 	         depth="1000"
@@ -42,7 +38,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs44" url="img/png/point.png" 
+	<hotspot name="hs44" url="%$tileserver%png/point.png" 
 	         ath="-58.731612" atv="32.895204" scale="0.5" width="50" height="50"
 	         visible="false"
 	         depth="1000"
@@ -52,7 +48,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs55" url="img/png/point.png" 
+	<hotspot name="hs55" url="%$tileserver%png/point.png" 
 	         ath="123.712878" atv="11.763777" scale="0.5" width="50" height="50" 
 			 visible="false"
 	         depth="1000"
@@ -63,7 +59,7 @@
 	         tz="0"
 	         />
 	
-	<hotspot name="hs77" url="img/png/point.png" 
+	<hotspot name="hs77" url="%$tileserver%png/point.png" 
 	         ath="48.627642" atv="26.492991"  scale="0.5" width="50" height="50" 
 			 visible="false"
 	         depth="1000"
@@ -74,7 +70,7 @@
 	         tz="0"
 	         />
 		
-	<hotspot name="hs1" url="img/png/btn2.png" 
+	<hotspot name="hs1" url="%$tileserver%png/btn2.png" 
 	         ath="-1.122933" atv="21.26477" scale="0.5" width="140" height="142" 
 	         visible="false"
 			 onclick="hotclick1"
@@ -85,7 +81,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs2" url="img/png/btn4.png" 
+	<hotspot name="hs2" url="%$tileserver%png/btn4.png" 
 	         ath="-16.853303" atv="44.74209" scale="0.5" width="68" height="147" 
 	         visible="false"
 			 onclick="hotclick2"
@@ -96,7 +92,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs3" url="img/png/btn1.png" 
+	<hotspot name="hs3" url="%$tileserver%png/btn1.png" 
 	         ath="219.668303" atv="1.011678" scale="0.5" width="66" height="137" 
 	         visible="false"
 	         onclick="hotclick3"
@@ -107,7 +103,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs4" url="img/png/btn6.png" 
+	<hotspot name="hs4" url="%$tileserver%png/btn6.png" 
 	         ath="-58.731612" atv="32.895204" scale="0.5" width="136" height="150"
 	         visible="false"
 			 onclick="hotclick4" 
@@ -118,7 +114,7 @@
 	         ty="0"
 	         tz="0"
 	         />
-	<hotspot name="hs6" url="img/png/btn7.png" 
+	<hotspot name="hs6" url="%$tileserver%png/btn7.png" 
 	         ath="123.712878" atv="11.763777" scale="0.5" width="342" height="310" 
 	         visible="false"
 	         onclick="hotclick6"
@@ -130,7 +126,7 @@
 	         tz="0"
 	         />
 	
-	<hotspot name="hs7" url="img/png/btn3.png" 
+	<hotspot name="hs7" url="%$tileserver%png/btn3.png" 
 	         ath="48.627642" atv="26.492991" scale="0.5" width="291" height="151"
 	         visible="false" 
 			 onclick="hotclick7"

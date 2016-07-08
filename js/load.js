@@ -8,6 +8,7 @@ var globalImgUrl = "http://images.nurunci.com/";
 		percentage = document.querySelector('.loadNum'),
 		spinner = document.querySelector('.loadSpinner'),
         navi = document.querySelector('.navi'),
+        tip = document.querySelector('.tip'),
 		// a = 0,
         b = 0;
 
@@ -82,6 +83,9 @@ var globalImgUrl = "http://images.nurunci.com/";
 				if(!spinner.classList.contains('rotating')){
 					spinner.classList.add('rotating');
                 }
+                if(!tip.classList.contains('blinking')){
+                    tip.classList.add('blinking');
+                }
                 loadWrap.addEventListener('click', imageClickHandler);
 			},500);
 		  }
@@ -134,7 +138,7 @@ var globalImgUrl = "http://images.nurunci.com/";
     	var box = loadWrap.getBoundingClientRect(), top = box.top, left = box.left;
     	clickPosition[0] = event.clientX - left;
     	clickPosition[1] = event.clientY - top;
-        imageGlass.style.opacity = 1;
+        imageGlass.style.opacity = 0.9;
     	//triangulate();
 
         window.setTimeout(function(){
@@ -143,7 +147,7 @@ var globalImgUrl = "http://images.nurunci.com/";
             container.style.background = 'transparent';
         },500);
     	//tracking code
-        ga('send','360','Experience');
+        ga('send','event','360','Experience');
 	}
 	function triangulate() {
     	var rings = [{r: 80,c: 12},{r:100,c:20},{r: 150,c: 12},{r: 300,c: 12},{r: 1200,c: 12}],//{r: 1200,c: 12}
@@ -242,6 +246,7 @@ var globalImgUrl = "http://images.nurunci.com/";
         // if(overlay.classList.contains('dn')){
         //     overlay.classList.remove('dn');
         // }
+        initMusic();
         if(navi.classList.contains('dn')){
             navi.classList.remove('dn');
         }
@@ -252,6 +257,8 @@ var globalImgUrl = "http://images.nurunci.com/";
             //overlay.classList.add('fadeOut');
             navi.classList.add('fadeOut');
             loadcomplete();
+            initGalleryWrap();
+            initShopWrap();
         },2500);
     	
         window.setTimeout(function(){
@@ -260,7 +267,7 @@ var globalImgUrl = "http://images.nurunci.com/";
             navi.classList.remove('fadeOut');
             navi.classList.add('dn');
            // overlay.addEventListener('click',toggleMenu);
-            initMusic();
+            
         },4000);
 	}
 	function shatterCompleteHandler() {
@@ -324,8 +331,5 @@ var globalImgUrl = "http://images.nurunci.com/";
         	this.ctx.clip();
         	this.ctx.drawImage(imageGlass, 0, 0);
     	}
-	};
-
-
-	
+	};	
 }());
